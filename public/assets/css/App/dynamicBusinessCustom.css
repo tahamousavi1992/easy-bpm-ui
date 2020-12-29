@@ -1,0 +1,90 @@
+﻿
+.fg-el-container {
+    padding: 0 15px;
+}
+
+.comboTreeInputBox {
+    padding: .375rem .75rem;
+    height: calc(2.25rem + 2px);
+    border-radius: .25rem;
+}
+/*condition form*/
+.operatorVar {
+    position: relative !important;
+    margin-left: 5px !important;
+    float: left !important;
+    max-width: 100px;
+}
+
+    .operatorVar a.delete {
+        position: absolute;
+        left: 0px;
+        top: -13px;
+    }
+/*combo tree*/
+.tab-content.tab-content-modal.clearfix {
+    overflow: visible;
+}
+
+.comboTreeDropDownContainer {
+    top: 100%;
+    z-index: 110002;
+}
+/*full modal*/
+.modal-maxlg {
+    width: 99% !important;
+    min-height: 90%;
+}
+/*Combo Tree*/ 
+.comboTreeDropDownContainer {
+    min-width: 100%;
+    width: auto !important;
+}
+
+.comboTreeParentPlus {
+    width: 10px !important;
+}
+
+.comboTreeDropDownContainer li:hover {
+    background-color: transparent !important;
+}
+.comboTreeDropDownContainer li.ComboTreeItemParent, .comboTreeDropDownContainer li.ComboTreeItemChlid {
+    list-style-type: none;
+    padding-left: 15px;
+}
+/*validation error*/
+.help-block.error {
+    color: #B94A48;
+}
+/*combo search width*/
+.input-group .select2 {
+    width: 100%;
+}
+
+.input-group.combo-search {
+    width: 100%;
+}
+
+input[data-isvariablecombotree] {
+    text-align: left;
+}
+
+/*CodeMirror*/
+.CodeMirror {
+    width: 100%;
+}
+
+/*validation error color*/
+.field-validation-valid {
+    color: red;
+}
+
+.align-btn-end {
+    margin-top: 25px;
+}
+.context-menu-root, #context-menu-layer {
+    z-index: 9999 !important;
+}
+.CodeMirror {
+    border: 2px inset #dee;
+}

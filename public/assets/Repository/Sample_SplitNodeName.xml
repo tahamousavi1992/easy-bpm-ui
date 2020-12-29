@@ -1,0 +1,32 @@
+﻿<process id="Process_08hgbyz">
+  <Set type="lane">
+    <lane id="Lane_1gusn5z">
+      <flowNodeRef>StartEvent_0ez5p7e</flowNodeRef>
+      <flowNodeRef>Task_0k8c58v</flowNodeRef>
+    </lane>
+    <lane id="Lane_1u52aaf">
+      <flowNodeRef>Task_1c10wfq</flowNodeRef>
+      <flowNodeRef>EndEvent_19phhnn</flowNodeRef>
+    </lane>
+  </Set>
+  <Flow type="sequence" id="SequenceFlow_034paw4" sourceRef="StartEvent_0ez5p7e" targetRef="Task_0k8c58v" />
+  <Flow type="sequence" id="SequenceFlow_18v9yxp" sourceRef="Task_0k8c58v" targetRef="Task_1c10wfq" />
+  <Event type="start" id="StartEvent_0ez5p7e">
+    <outgoing>SequenceFlow_034paw4</outgoing>
+  </Event>
+  <Task type="user" id="Task_0k8c58v" name="ارسال درخواست">
+    <incoming>SequenceFlow_034paw4</incoming>
+    <outgoing>SequenceFlow_18v9yxp</outgoing>
+    <TaskUsers>
+      <TaskUser RoleName="BPMS_User" />
+    </TaskUsers>
+  </Task>
+  <Task type="" id="Task_1c10wfq" name="بررسی درخواست">
+    <incoming>SequenceFlow_18v9yxp</incoming>
+    <outgoing>SequenceFlow_0tf4vx1</outgoing>
+  </Task>
+  <Event type="end" id="EndEvent_19phhnn">
+    <incoming>SequenceFlow_0tf4vx1</incoming>
+  </Event>
+  <Flow type="sequence" id="SequenceFlow_0tf4vx1" sourceRef="Task_1c10wfq" targetRef="EndEvent_19phhnn" />
+</process>

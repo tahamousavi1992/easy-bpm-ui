@@ -1,0 +1,277 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v5/ODelI1aHBYDBqgeIAH2zlBM0YzuT7MdOe03otPbuUS0.woff) format('woff');
+}
+ 
+p { margin-top: 0; }
+
+.designCode h2, .designCode h3, .designCode h1 {
+  font-weight: normal;
+  margin-bottom: .7em;
+}
+.designCode h1 {
+  font-size: 140%;
+}
+.designCode h2 {
+  font-size: 120%;
+}
+.designCode h3 {
+  font-size: 110%;
+}
+article > h2:first-child, section:first-child > h2 { margin-top: 0; }
+
+.designCode #nav h1 {
+  margin-right: 12px;
+  margin-top: 0;
+  margin-bottom: 2px;
+  color: #d30707;
+  letter-spacing: .5px;
+}
+
+.designCode a, .designCode a:visited, .designCode a:link, .designCode .quasilink {
+  color: #A21313;
+}
+
+.designCode em {
+  padding-right: 2px;
+}
+
+.designCode .quasilink {
+  cursor: pointer;
+}
+
+.designCode article {
+  max-width: 700px;
+  margin: 0 0 0 160px;
+  border-left: 2px solid #E30808;
+  border-right: 1px solid #ddd;
+  padding: 30px 50px 100px 50px;
+  background: white;
+  z-index: 2;
+  position: relative;
+  min-height: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.designCode #nav {
+  position: fixed;
+  padding-top: 30px;
+  max-height: 100%;
+  box-sizing: -moz-border-box;
+  box-sizing: border-box;
+  overflow-y: auto;
+  left: 0;
+  right: none;
+  width: 160px;
+  text-align: right;
+  z-index: 1;
+}
+
+@media screen and (min-width: 1000px) {
+.designCode article {
+    margin: 0 auto;
+  }
+  .designCode #nav {
+    right: 50%;
+    width: auto;
+    border-right: 349px solid transparent;
+  }
+}
+
+.designCode #nav ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 32px;
+}
+
+.designCode #nav a {
+  text-decoration: none;
+}
+
+.designCode #nav li {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.designCode #nav li ul {
+  font-size: 80%;
+  margin-bottom: 0;
+  display: none;
+}
+
+  .designCode #nav li.active ul {
+    display: block;
+  }
+
+  .designCode #nav li li a {
+    padding-right: 20px;
+    display: inline-block;
+  }
+
+.designCode #nav ul a {
+  color: black;
+  padding: 0 7px 1px 11px;
+}
+
+  .designCode #nav ul a.active, .designCode #nav ul a:hover {
+    border-bottom: 1px solid #E30808;
+    margin-bottom: -1px;
+    color: #E30808;
+  }
+
+.designCode #logo {
+  border: 0;
+  margin-right: 12px;
+  margin-bottom: 25px;
+}
+
+.designCode section {
+  border-top: 1px solid #E30808;
+  margin: 1.5em 0;
+}
+
+  .designCode section.first {
+    border: none;
+    margin-top: 0;
+  }
+
+.designCode #demo {
+  position: relative;
+}
+
+.designCode #demolist {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 25;
+}
+
+.designCode .yinyang {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+  height: 120px;
+}
+
+.designCode .actions {
+  margin: 1em 0 0;
+  min-height: 100px;
+  position: relative;
+}
+
+.designCode .actionspicture {
+  pointer-events: none;
+  position: absolute;
+  height: 100px;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.designCode .actionlink {
+  pointer-events: auto;
+  font-family: arial;
+  font-size: 80%;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  line-height: 1;
+  height: 1em;
+  margin: auto;
+}
+
+  .designCode .actionlink.download {
+    color: white;
+    right: 50%;
+    margin-right: 13px;
+    text-shadow: -1px 1px 3px #b00, -1px -1px 3px #b00, 1px 0px 3px #b00;
+  }
+
+  .designCode .actionlink.fund {
+    color: #b00;
+    left: 50%;
+    margin-left: 15px;
+  }
+
+  .designCode .actionlink:hover {
+    text-decoration: underline;
+  }
+
+  .designCode .actionlink a {
+    color: inherit;
+  }
+
+.designCode .actionsleft {
+  float: left;
+}
+
+.designCode .actionsright {
+  float: right;
+  text-align: right;
+}
+
+@media screen and (max-width: 800px) {
+  .designCode .actions {
+    padding-top: 120px;
+  }
+  .designCode .actionsleft, .actionsright {
+    float: none;
+    text-align: left;
+    margin-bottom: 1em;
+  }
+}
+
+.designCode th {
+  text-decoration: underline;
+  font-weight: normal;
+  text-align: left;
+}
+
+.designCode #features ul {
+  list-style: none;
+  margin: 0 0 1em;
+  padding: 0 0 0 1.2em;
+}
+
+.designCode #features li:before {
+  content: "-";
+  width: 1em;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  margin-left: -1em;
+}
+
+.designCode .rel {
+  margin-bottom: 0;
+}
+.designCode .rel-note {
+  margin-top: 0;
+  color: #555;
+}
+
+.designCode pre {
+  padding-left: 15px;
+  border-left: 2px solid #ddd;
+}
+
+.designCode code {
+  padding: 0 2px;
+}
+
+.designCode strong {
+  text-decoration: underline;
+  font-weight: normal;
+}
+
+.designCode .field {
+  border: 1px solid #A21313;
+}
