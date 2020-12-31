@@ -153,7 +153,7 @@ class AdminLayout extends React.Component {
                                         </div>
                                         {
                                             this.state.BackToFunction &&
-                                            <button className="btn btn-primary" onClick={this.state.BackToFunction}><i className="fa fa-arrow-left"></i>{Lang.Shared.backTo}</button>
+                                            <button type='button' className="btn btn-primary" onClick={this.state.BackToFunction}><i className="fa fa-arrow-left"></i>{Lang.Shared.backTo}</button>
                                         }
                                     </div>
                                 </div>
