@@ -22,6 +22,7 @@ class FolderList extends React.Component {
         this.inActiveFolder = this.inActiveFolder.bind(this);
     }
     async componentDidMount() {
+        window.selectedID = null;
         this.props.setPageCaption(9, [Lang.Menu.FolderList, Lang.Menu.management], false);
         this.doLoadForm();
     }
@@ -98,10 +99,8 @@ class FolderList extends React.Component {
             }
         }).on("changed.jstree", function (e, data) {
             if (data.selected.length) {
-                if (data.instance.get_node(data.selected[0]).id != window.selectedID) {
-                    window.selectedID = data.instance.get_node(data.selected[0]).id;
-                    window.doDefSearch();
-                }
+                window.selectedID = data.instance.get_node(data.selected[0]).id;
+                window.doDefSearch();
             }
         });
     }
@@ -144,12 +143,15 @@ class FolderList extends React.Component {
 
     handelChange = (event) => { this.setState(UtilityService.handelChange(event)); }
 
-    async openAddEditDefForm(id) {
+    async openAddEditDefForm(id, documentFolderID) {
         if (window.selectedID == null || window.selectedID == '-1') {
-            alert('First choose Folder');
-            return;
+            if (documentFolderID == null) {
+                alert('First choose Folder');
+                return;
+            }
         }
-        await this.setState({ AddEditId: id, DocumentFolderID: window.selectedID });
+
+        await this.setState({ AddEditId: id, DocumentFolderID: (window.selectedID != null ? window.selectedID : documentFolderID) });
         //to reload modal form i had two hide&show component to reload that
         await this.setState({ OpenDefAddEdit: false });
         await this.setState({ OpenDefAddEdit: true });
@@ -255,7 +257,7 @@ class FolderList extends React.Component {
                                                                 </td>
 
                                                                 <td className="text-center">
-                                                                    <a href="javascript:;" onClick={() => this.openAddEditDefForm(item.ID)} className="btn btn-sm btn-clean btn-icon" title={Lang.Shared.edit}>
+                                                                    <a href="javascript:;" onClick={() => this.openAddEditDefForm(item.ID, item.DocumentFolderID)} className="btn btn-sm btn-clean btn-icon" title={Lang.Shared.edit}>
                                                                         <span className="svg-icon svg-icon-md"><i className="fad fa-pencil"></i></span>
                                                                     </a>
                                                                     <a href="javascript:;" onClick={() => UtilityService.showConfirm(Lang.Shared.makeDelete, this.inActiveDef, item.ID)} className="btn btn-sm btn-clean btn-icon" title={Lang.Shared.delete}>

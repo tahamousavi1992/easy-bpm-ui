@@ -30,6 +30,7 @@ class ProcessList extends React.Component {
     }
 
     async componentDidMount() {
+        window.selectedID = null;
         this.props.setPageCaption(2, [Lang.Menu.ProcessList, Lang.Menu.management], false);
         this.doLoadForm();
     }

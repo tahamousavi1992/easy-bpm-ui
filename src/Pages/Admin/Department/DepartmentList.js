@@ -23,6 +23,7 @@ class DepartmentList extends React.Component {
     }
 
     async componentDidMount() {
+        window.selectedID = null;
         this.props.setPageCaption(3, [Lang.Menu.departmentList, Lang.Menu.setting], false);
         this.doLoadForm();
     }
@@ -99,10 +100,8 @@ class DepartmentList extends React.Component {
             }
         }).on("changed.jstree", function (e, data) {
             if (data.selected.length) {
-                if (data.instance.get_node(data.selected[0]).id != window.selectedID) {
-                    window.selectedID = data.instance.get_node(data.selected[0]).id;
-                    window.doMemberSearch();
-                }
+                window.selectedID = data.instance.get_node(data.selected[0]).id;
+                window.doMemberSearch();
             }
         });
     }
@@ -145,12 +144,14 @@ class DepartmentList extends React.Component {
 
     handelChange = (event) => { this.setState(UtilityService.handelChange(event)); }
 
-    async openAddEditMemberForm(id) {
+    async openAddEditMemberForm(id, departmentID) {
         if (window.selectedID == null || window.selectedID == '-1') {
-            alert(Lang.DepartmentList.selectOprganozation);
-            return;
+            if (departmentID == null) {
+                alert(Lang.DepartmentList.selectOprganozation);
+                return;
+            }
         }
-        await this.setState({ AddEditId: id, DepartmentID: window.selectedID });
+        await this.setState({ AddEditId: id, DepartmentID: (window.selectedID != null ? window.selectedID : departmentID) });
         //to reload modal form i had two hide&show component to reload that
         await this.setState({ OpenMemberAddEdit: false });
         await this.setState({ OpenMemberAddEdit: true });
@@ -238,7 +239,7 @@ class DepartmentList extends React.Component {
                                                                 </td>
 
                                                                 <td className="text-center">
-                                                                    <a onClick={() => this.openAddEditMemberForm(item.UserID)} className="btn btn-sm btn-clean btn-icon" title={Lang.Shared.edit}>
+                                                                    <a onClick={() => this.openAddEditMemberForm(item.UserID, item.DepartmentID)} className="btn btn-sm btn-clean btn-icon" title={Lang.Shared.edit}>
                                                                         <span className="svg-icon svg-icon-md"><i className="fad fa-pencil"></i></span>
                                                                     </a>
                                                                     <a onClick={() => UtilityService.showConfirm(Lang.Shared.makeDelete, this.deleteMember, item.ID)} className="btn btn-sm btn-clean btn-icon" title={Lang.Shared.delete}>
