@@ -9,6 +9,7 @@ export default function UserTaskContent(props) {
     let [model, setModel] = useState({});
     const history = useHistory();
     useEffect(() => {
+        //dynamic script ,defined in forms ,whill be added to page.
         let script = document.createElement('script');
         script.innerHTML = props.FormModel.ContentHtml.Helper.Script;
         document.body.appendChild(script);

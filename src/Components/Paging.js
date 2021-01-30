@@ -13,6 +13,7 @@ class Paging extends React.Component {
 
     }
     loadSearchForm(event, doSearch, pageIndex) {
+        //each component that wants to implement a paging must have a doSearch function. 
         doSearch(false, null, {
             PageIndex: pageIndex,
             SortColumn: this.props.SortColumn,
