@@ -151,7 +151,7 @@ class FolderList extends React.Component {
             }
         }
 
-        await this.setState({ AddEditId: id, DocumentFolderID: (window.selectedID != null ? window.selectedID : documentFolderID) });
+        await this.setState({ AddEditId: id, DocumentFolderID: ((window.selectedID != null && window.selectedID != '-1') ? window.selectedID : documentFolderID) });
         //to reload modal form i had two hide&show component to reload that
         await this.setState({ OpenDefAddEdit: false });
         await this.setState({ OpenDefAddEdit: true });

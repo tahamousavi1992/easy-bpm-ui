@@ -55,9 +55,9 @@ class UserList extends React.Component {
                                         </h3>
                                     </div>
                                     <div className="card-toolbar">
-                                        <a className="btn btn-primary font-weight-bolder" id="btnaddnewDbConnection" onClick={() => this.openAddEditForm(null)}>
+                                        <button type="button" className="btn btn-primary font-weight-bolder" id="btnaddnewDbConnection" onClick={() => this.openAddEditForm(null)}>
                                             {Lang.UserList.new}
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                                 <div className="card-body">

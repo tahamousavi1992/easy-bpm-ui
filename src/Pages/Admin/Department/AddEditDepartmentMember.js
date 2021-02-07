@@ -14,6 +14,7 @@ class AddEditDepartmentMember extends React.Component {
         //load validation
         window.initialFunctions();
         window.bpmsInitialValidation('');
+        this.setState({ addEditId: this.props.addEditId });
         //load data 
         let data = await new DepartmentMemberService().get(this.props.addEditId, this.props.departmentID);
         this.setState({ ...data });
@@ -45,8 +46,11 @@ class AddEditDepartmentMember extends React.Component {
                       <a href="#" class="btn btn-sm btn-clean btn-icon" onclick="$(this.closest('tr')).remove();" title="Delete"><span class="svg-icon svg-icon-md"><i class="fad fa-trash-alt"></i></span></a>
                   </td>
                 </tr>`;
+                //disable UserID dropdown list.
+                this.setState({ addEditId: this.state.UserID });
         }
         await this.setState({ RoleID: '' });
+
     }
 
     render() {
@@ -70,7 +74,7 @@ class AddEditDepartmentMember extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditDepartmentMember.user}</label>
                                     <div className="input-group">
-                                        <Select name="UserID" id="UserID" value={this.state.UserID || ''} handelChange={this.handelChange} disabled={this.props.addEditId != null}
+                                        <Select name="UserID" id="UserID" value={this.state.UserID || ''} handelChange={this.handelChange} disabled={this.state.addEditId != null}
                                             listItem={this.state.ListUsers} optionKey="ID" optionLabel="FullName" isRequired={true} validationGroup="addRole" requiredMsg={Lang.requiredMsg(Lang.AddEditDepartmentMember.user)} />
                                     </div>
                                     <span htmlFor="UserID" className="help-block error"></span>

@@ -31,7 +31,6 @@ class DepartmentList extends React.Component {
     async doLoadForm() {
         window.doMemberSearch = this.doMemberSearch;
         window.doDepartmentSearch = this.doDepartmentSearch;
-        window.openAddEditMemberForm = this.openAddEditMemberForm;
         window.openAddEditDepartmentForm = this.openAddEditDepartmentForm;
         window.deleteDepartment = this.deleteDepartment;
         await this.doDepartmentSearch();
@@ -128,8 +127,8 @@ class DepartmentList extends React.Component {
         await this.doMemberSearch();
     }
 
-    async deleteMember(id) {
-        let result = await new DepartmentMemberService().delete(id);
+    async deleteMember(arg) {
+        let result = await new DepartmentMemberService().delete(arg.UserID, arg.DepartmentID);
         UtilityService.showMessage(result.ResultType, result.Message);
         await this.doMemberSearch();
     }
@@ -151,7 +150,7 @@ class DepartmentList extends React.Component {
                 return;
             }
         }
-        await this.setState({ AddEditId: id, DepartmentID: (window.selectedID != null ? window.selectedID : departmentID) });
+        await this.setState({ AddEditId: id, DepartmentID: ((window.selectedID != null && window.selectedID != '-1') ? window.selectedID : departmentID) });
         //to reload modal form i had two hide&show component to reload that
         await this.setState({ OpenMemberAddEdit: false });
         await this.setState({ OpenMemberAddEdit: true });
@@ -242,7 +241,7 @@ class DepartmentList extends React.Component {
                                                                     <a onClick={() => this.openAddEditMemberForm(item.UserID, item.DepartmentID)} className="btn btn-sm btn-clean btn-icon" title={Lang.Shared.edit}>
                                                                         <span className="svg-icon svg-icon-md"><i className="fad fa-pencil"></i></span>
                                                                     </a>
-                                                                    <a onClick={() => UtilityService.showConfirm(Lang.Shared.makeDelete, this.deleteMember, item.ID)} className="btn btn-sm btn-clean btn-icon" title={Lang.Shared.delete}>
+                                                                    <a onClick={() => UtilityService.showConfirm(Lang.Shared.makeDelete, this.deleteMember, { UserID: item.UserID, DepartmentID: item.DepartmentID })} className="btn btn-sm btn-clean btn-icon" title={Lang.Shared.delete}>
                                                                         <span className="svg-icon svg-icon-md"><i className="fad fa-trash-alt"></i></span>
                                                                     </a>
 
