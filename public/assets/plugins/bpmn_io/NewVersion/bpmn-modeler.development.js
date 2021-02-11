@@ -13971,8 +13971,8 @@ setTimeout(function () {
 			'background: white',
 			'box-shadow: 0 1px 4px rgba(0,0,0,0.3)',
 			//taha start
-			'font-family:IRANSans,Tahoma, Helvetica, Arial, sans-serif',
-			//'font-family: Helvetica, Arial, sans-serif',
+			//'font-family:IRANSans,Tahoma, Helvetica, Arial, sans-serif',
+			'font-family: Helvetica, Arial, sans-serif',
 			//end taha
 			'font-size: 14px',
 			'display: flex',
@@ -17304,8 +17304,8 @@ setTimeout(function () {
 
 			var defaultStyle = assign({
 				// taha start
-				fontFamily: 'IRANSans,Tahoma, Arial, sans-serif',
-				//fontFamily: 'Arial, sans-serif',
+				//fontFamily: 'IRANSans,Tahoma, Arial, sans-serif',
+				fontFamily: 'Arial, sans-serif',
 				//taha end
 				fontSize: DEFAULT_FONT_SIZE,
 				fontWeight: 'normal',
@@ -54600,16 +54600,16 @@ setTimeout(function () {
 				//		click: createSubprocess
 				//	}
 				//},
-				//end taha
-				'create.participant-expanded': {
-					group: 'collaboration',
-					className: 'bpmn-icon-participant',
-					title: translate('Create Pool/Participant'),
-					action: {
-						dragstart: createParticipant,
-						click: createParticipant
-					}
-				},
+				// 'create.participant-expanded': {
+				// 	group: 'collaboration',
+				// 	className: 'bpmn-icon-participant',
+				// 	title: translate('Create Pool/Participant'),
+				// 	action: {
+				// 		dragstart: createParticipant,
+				// 		click: createParticipant
+				// 	}
+				// },
+			    //end taha
 				'create.group': createAction(
 					'bpmn:Group', 'artifact', 'bpmn-icon-group',
 					translate('Create Group')
