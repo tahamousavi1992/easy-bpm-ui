@@ -1821,14 +1821,11 @@ export var textBoxTypeEnum = {
     postalCode: lang.FG.textBoxTypepostalCode,
     mobile: lang.FG.textBoxTypemobile,
     justEnglishCharacter: lang.FG.textBoxTypejustEnglishCharacter,
-    justPersianCharacter: lang.FG.textBoxTypejustPersianCharacter,
     symbol: lang.FG.textBoxTypesymbol,
     characterAndNumber: lang.FG.textBoxTypecharacterAndNumber,
-    sepratorNumber: lang.FG.textBoxTypesepratorNumber,
+    money: lang.FG.textBoxTypeMoney,
     phone: lang.FG.textBoxTypephone,
     enCharacterAndNumber: lang.FG.textBoxTypeenCharacterAndNumber,
-    allExceptInPersian: lang.FG.textBoxTypeallExceptInPersian,
-    allExceptInEn: lang.FG.textBoxTypeallExceptInEn,
     codeMeliCompany: lang.FG.textBoxTypecodeMeliCompany,
 };
 // This class uses Destructuring assignment for having dynamic parameters

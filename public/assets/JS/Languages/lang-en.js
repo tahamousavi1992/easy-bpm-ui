@@ -93,11 +93,9 @@
          textBoxTypejustPersianCharacter: 'Only Persian letters',
          textBoxTypesymbol: 'symbol',
          textBoxTypecharacterAndNumber: 'Letters And Numbers',
-         textBoxTypesepratorNumber: 'Seprator',
+         textBoxTypeMoney: 'Money',
          textBoxTypephone: 'Phone',
          textBoxTypeenCharacterAndNumber: 'English letters and numbers',
-         textBoxTypeallExceptInPersian: 'All except Persian',
-         textBoxTypeallExceptInEn: 'All except English',
          textBoxTypecodeMeliCompany: 'Company National ID',
          txtLabel: 'Caption',
          //events function

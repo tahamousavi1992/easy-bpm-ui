@@ -7,10 +7,9 @@ function bpmsInitialValidation() {
 
         element.addEventListener('change', bpmsElementCheckElementValidation);
         if (element.hasAttribute("data-val-justnumber") || element.hasAttribute("data-val-justCharacter") ||
-            element.hasAttribute("data-val-justEnglishCharacter") || element.hasAttribute("data-val-justPersianCharacter") ||
+            element.hasAttribute("data-val-justEnglishCharacter") ||
             element.hasAttribute("data-val-symbol") || element.hasAttribute("data-val-characterAndNumber") ||
-            element.hasAttribute("data-val-enCharacterAndNumber") || element.hasAttribute("data-val-allExceptInPersian") ||
-            element.hasAttribute("data-val-allExceptInEn")) {
+            element.hasAttribute("data-val-enCharacterAndNumber")) {
             element.addEventListener('keypress', bpmsElementCheckElementValidation);
             element.addEventListener('keyup', bpmsElementCheckElementValidation);
         }
@@ -19,18 +18,6 @@ function bpmsInitialValidation() {
             element.addEventListener('keypress', checkCodeMeli);
         }
     });
-    //document.querySelectorAll("a[data-val-group],button[data-val-group]").forEach(function (element, index) {
-    //    let onClick = element.getAttribute('onclick');
-    //    if (onClick != null) {
-    //        if (onClick.indexOf('checkFormValidation') < 0) {
-    //            element.removeAttribute('onclick');
-    //            element.setAttribute('onclick', 'if(bpmsFormIsValid()) { ' + onClick + ' ; return true;} else return false;');
-    //        }
-    //    }
-    //    else {
-    //        element.setAttribute('onclick', 'if(bpmsFormIsValid()) {return true;} else return false;');
-    //    }
-    //});
 }
 
 function bpmsElementCheckElementValidation() {
@@ -117,12 +104,6 @@ function bpmsCheckElementValidation(element, isPost) {
             if (!isValid)
                 validationMsg += element.getAttribute('data-val-' + textBoxValTypeEnum.justEnglishCharacter.toLowerCase()) + "<br />";
         }
-        //check justPersianCharacter
-        if (element.getAttribute('data-val-' + textBoxValTypeEnum.justPersianCharacter.toLowerCase()) != null) {
-            let isValid = vIsPersianCharacter(element.value);
-            if (!isValid)
-                validationMsg += element.getAttribute('data-val-' + textBoxValTypeEnum.justPersianCharacter.toLowerCase()) + "<br />";
-        }
         //check symbol
         if (element.getAttribute('data-val-' + textBoxValTypeEnum.symbol.toLowerCase()) != null) {
             let isValid = vIsSymbols(element.value);
@@ -135,12 +116,12 @@ function bpmsCheckElementValidation(element, isPost) {
             if (!isValid)
                 validationMsg += element.getAttribute('data-val-' + textBoxValTypeEnum.characterAndNumber.toLowerCase()) + "<br />";
         }
-        //check sepratorNumber
-        if (element.getAttribute('data-val-' + textBoxValTypeEnum.sepratorNumber.toLowerCase()) != null) {
+        //check Money
+        if (element.getAttribute('data-val-' + textBoxValTypeEnum.money.toLowerCase()) != null) {
             numberWithCommas(element.id, ',');
             let isValid = vIsNumericWithSeprator(element.value);
             if (!isValid)
-                validationMsg += element.getAttribute('data-val-' + textBoxValTypeEnum.sepratorNumber.toLowerCase()) + "<br />";
+                validationMsg += element.getAttribute('data-val-' + textBoxValTypeEnum.money.toLowerCase()) + "<br />";
         }
         //check phone
         if (element.getAttribute('data-val-' + textBoxValTypeEnum.phone.toLowerCase()) != null) {
@@ -153,20 +134,6 @@ function bpmsCheckElementValidation(element, isPost) {
             let isValid = vIsEnCharacterAndNumber(element.value);
             if (!isValid)
                 validationMsg += element.getAttribute('data-val-' + textBoxValTypeEnum.enCharacterAndNumber.toLowerCase()) + "<br />";
-        }
-        //check allExceptInPersian
-        if (element.getAttribute('data-val-' + textBoxValTypeEnum.allExceptInPersian.toLowerCase()) != null) {
-            AllExceptInPersian(element);
-            let isValid = vIsAllExceptInPersian(element.value);
-            if (!isValid)
-                validationMsg += element.getAttribute('data-val-' + textBoxValTypeEnum.allExceptInPersian.toLowerCase()) + "<br />";
-        }
-        //check allExceptInEn
-        if (element.getAttribute('data-val-' + textBoxValTypeEnum.allExceptInEn.toLowerCase()) != null) {
-            AllExceptInPersian(AllExceptInEn);
-            let isValid = vIsAllExceptInEn(element.value);
-            if (!isValid)
-                validationMsg += element.getAttribute('data-val-' + textBoxValTypeEnum.allExceptInEn.toLowerCase()) + "<br />";
         }
         //check codeMeliCompany
         if (element.getAttribute('data-val-' + textBoxValTypeEnum.codeMeliCompany.toLowerCase()) != null) {
@@ -386,34 +353,6 @@ function vIsEnCharacterAndNumber(input) {
     return E.test(input);
 }
 
-function vIsAllExceptInEn(input) {
-    if (input == null || input == '')
-        return true;
-    var E = /[-!$%@^&*()_+|~=`{}\[\]:";'<>?,.\/\u0600-\u065F\u066A-\u06EF\u06FA-\u06FF\s]+$/;
-    var s = input;
-    for (var i = 0; i < s.length; i++) {
-        if (E.test(s.charAt(i)) == false) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-function vIsAllExceptInPersian(input) {
-    if (input == null || input == '')
-        return true;
-    var E = /[-!$%@^&*()_+|~=`{}\[\]:";'<>?,.\/a-zA-Z0-9\s]+$/;
-    var s = input;
-    for (var i = 0; i < s.length; i++) {
-        if (E.test(s.charAt(i)) == false) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
 function vIsCodeMeliCompanyValid(code) {
     if (code == null || code == '')
         return true;
@@ -472,42 +411,6 @@ function removeSep(str, format) {
     return str;
 }
 
-function AllExceptInEn(element) {
-    if (event != null && event.type == 'keyup') {
-        var p = /[-!$%@^&*()_+|~=`{}\[\]:";'<>?,.\/0-9\u0600-\u06FF\s]+$/;
-        var prevValue = window['preValue'];
-
-        // check if new value is more or equal to 255
-        if (element.value == "" || element.value == " ") {
-            return;
-        }
-        var s = element.value;
-        for (var i = 0; i < s.length; i++) {
-            if (p.test(s.charAt(i)) == false) {
-                element.value = prevValue;
-                return;
-            }
-        }
-    }
-}
-
-function AllExceptInPersian(element) {
-    if (event != null && event.type == 'keyup') {
-        var p = /[-!$%@^&*()_+|~=`{}\[\]:";'<>?,.\/a-zA-Z0-9\s]+$/;
-        var prevValue = window['preValue'];
-        // check if new value is more or equal to 255
-        if (element.value == "" || element.value == " ") {
-            return;
-        }
-        var s = element.value;
-        for (var i = 0; i < s.length; i++) {
-            if (p.test(s.charAt(i)) == false) {
-                element.value = prevValue;
-                return;
-            }
-        }
-    }
-}
 
 function enNumber(inputString) {
     var enEqualNumbers = {
@@ -571,14 +474,11 @@ var textBoxValTypeEnum = {
     postalCode: 'postalCode',
     mobile: 'mobile',
     justEnglishCharacter: 'justEnglishCharacter',
-    justPersianCharacter: 'justPersianCharacter',
     symbol: 'symbol',
     characterAndNumber: 'characterAndNumber',
-    sepratorNumber: 'sepratorNumber',
+    money: 'money',
     phone: 'phone',
     enCharacterAndNumber: 'enCharacterAndNumber',
-    allExceptInPersian: 'allExceptInPersian',
-    allExceptInEn: 'allExceptInEn',
     codeMeliCompany: 'codeMeliCompany',
 };
 

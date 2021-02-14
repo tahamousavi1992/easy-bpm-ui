@@ -50,14 +50,15 @@ class AddEditDef extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditDef.displayName}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.DisplayName || ''} name='DisplayName' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditDef.displayName)} data-val="true" />
+                                        <input onChange={this.handelChange} value={this.state.DisplayName || ''} name='DisplayName' className="form-control required-field" 
+                                        data-val-required={Lang.requiredMsg(Lang.AddEditDef.displayName)} data-val="true" autoComplete="off" />
                                     </div>
                                     <span htmlFor="DisplayName" className="help-block error"></span>
                                 </div>
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditDef.name}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.NameOf || ''} name='NameOf' className="form-control" />
+                                        <input onChange={this.handelChange} value={this.state.NameOf || ''} name='NameOf' className="form-control" autoComplete="off" />
                                     </div>
                                     <span htmlFor="NameOf" className="help-block error"></span>
                                 </div>
@@ -73,7 +74,7 @@ class AddEditDef extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditDef.validExtentions}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.ValidExtentions || ''} name='ValidExtentions' className="form-control" />
+                                        <input onChange={this.handelChange} value={this.state.ValidExtentions || ''} name='ValidExtentions' className="form-control" autoComplete="off" />
                                     </div>
                                     <span htmlFor="ValidExtentions" className="help-block error"></span>
                                 </div>

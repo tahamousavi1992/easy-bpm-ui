@@ -331,7 +331,7 @@ class DesignProcess extends React.Component {
                                     </a>
                                 </div>
                             </div>
-                            <div className="card-body portlet-scroll">
+                            <div className="card-body">
                                 <div className="row">
                                     <div className="col-sm-12">
                                         <div id="canvas" style={{ border: '1px solid', height: '700px' }}></div>
