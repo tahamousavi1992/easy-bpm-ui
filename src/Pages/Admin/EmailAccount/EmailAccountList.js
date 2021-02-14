@@ -76,9 +76,6 @@ class EmailAccountList extends React.Component {
                                                             {Lang.EmailAccountList.tbl_th_Port}
                                                         </th>
                                                         <th>
-                                                            {Lang.EmailAccountList.tbl_th_MailUserName}
-                                                        </th>
-                                                        <th>
                                                             {Lang.EmailAccountList.tbl_th_Operation}
                                                         </th>
                                                     </tr>
@@ -96,9 +93,6 @@ class EmailAccountList extends React.Component {
                                                                 </td>
                                                                 <td className="text-center">
                                                                     {item.Port}
-                                                                </td>
-                                                                <td className="text-center">
-                                                                    {item.MailUserName}
                                                                 </td>
                                                                 <td className="text-center">
                                                                     <a onClick={() => this.openAddEditForm(item.ID)} className="btn btn-sm btn-clean btn-icon" title={Lang.Shared.edit}>

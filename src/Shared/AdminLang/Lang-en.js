@@ -347,7 +347,6 @@ By double-clicking on any shape(action), you can specify the activity associated
         caption: 'Add or Edit Email',
         smtp: 'SMTP',
         port: 'Port',
-        mailUserName: 'Mail UserName',
         mailPassword: 'MailPassword',
         email: 'Email',
         test: 'Test',

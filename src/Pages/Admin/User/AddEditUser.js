@@ -151,28 +151,19 @@ class AddEditUser extends React.Component {
                                                 </div>
                                             </div>
                                             <div className="form-group row">
-                                                <div className="col-lg-6">
-                                                    <label>{Lang.AddEditUser.mailUserName}</label>
-                                                    <div className="input-group">
-                                                        <input onChange={this.handelChange} value={this.state.EmailAccountDTO ? this.state.EmailAccountDTO.MailUserName : ''} name='EmailAccountDTO.MailUserName' className="form-control" autoComplete="off" />
-                                                    </div>
-                                                    <span htmlFor="EmailAccountDTO.MailUserName" className="help-block error"></span>
-                                                </div>
-                                                <div className="col-lg-6">
-                                                    <label>{Lang.AddEditUser.mailPassword}</label>
-                                                    <div className="input-group">
-                                                        <input onChange={this.handelChange} value={this.state.EmailAccountDTO ? this.state.EmailAccountDTO.MailPassword : ''} name='EmailAccountDTO.MailPassword' className="form-control" autoComplete="off" />
-                                                    </div>
-                                                    <span htmlFor="EmailAccountDTO.MailPassword" className="help-block error"></span>
-                                                </div>
-                                            </div>
-                                            <div className="form-group row">
-                                                <div className="col-lg-6">
+                                            <div className="col-lg-6">
                                                     <label> {Lang.AddEditUser.email}</label>
                                                     <div className="input-group">
                                                         <input onChange={this.handelChange} value={this.state.EmailAccountDTO ? this.state.EmailAccountDTO.Email : ''} name='EmailAccountDTO.Email' className="form-control" autoComplete="off" />
                                                     </div>
                                                     <span htmlFor="EmailAccountDTO.Email" className="help-block error"></span>
+                                                </div>
+                                                <div className="col-lg-6">
+                                                    <label>{Lang.AddEditUser.mailPassword}</label>
+                                                    <div className="input-group">
+                                                        <input onChange={this.handelChange} value={this.state.EmailAccountDTO ? this.state.EmailAccountDTO.MailPassword : ''} name='EmailAccountDTO.MailPassword' className="form-control"  type='password' autoComplete="off" />
+                                                    </div>
+                                                    <span htmlFor="EmailAccountDTO.MailPassword" className="help-block error"></span>
                                                 </div>
                                             </div>
                                         </div>

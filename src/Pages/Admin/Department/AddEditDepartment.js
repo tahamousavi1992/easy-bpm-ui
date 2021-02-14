@@ -79,16 +79,9 @@ class AddEditDepartment extends React.Component {
                             </div>
                             <div className="form-group row">
                                 <div className="col-lg-6">
-                                    <label>{Lang.AddEditDepartment.emailUserName}</label>
-                                    <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.MailUserName || ''} name='MailUserName' className="form-control" />
-                                    </div>
-                                    <span htmlFor="MailUserName" className="help-block error"></span>
-                                </div>
-                                <div className="col-lg-6">
                                     <label>{Lang.AddEditDepartment.emailPassword}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.MailPassword || ''} name='MailPassword' className="form-control" />
+                                        <input onChange={this.handelChange} value={this.state.MailPassword || ''} type='password' name='MailPassword' className="form-control" />
                                     </div>
                                     <span htmlFor="MailPassword" className="help-block error"></span>
                                 </div>

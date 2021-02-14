@@ -70,12 +70,12 @@ class AddEditEmailAccount extends React.Component {
                                 </div>
                             </div>
                             <div className="form-group row">
-                                <div className="col-lg-6">
-                                    <label>{Lang.AddEditEmailAccount.mailUserName}</label>
+                            <div className="col-lg-6">
+                                    <label>{Lang.AddEditEmailAccount.email}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.MailUserName || ''} name='MailUserName' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditEmailAccount.mailUserName)} data-val="true" autoComplete="off" />
+                                        <input onChange={this.handelChange} value={this.state.Email || ''} name='Email' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditEmailAccount.email) } data-val="true" autoComplete="off" />
                                     </div>
-                                    <span htmlFor="MailUserName" className="help-block error"></span>
+                                    <span htmlFor="Email" className="help-block error"></span>
                                 </div>
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditEmailAccount.mailPassword}</label>
@@ -83,15 +83,6 @@ class AddEditEmailAccount extends React.Component {
                                         <input onChange={this.handelChange} value={this.state.MailPassword || ''} name='MailPassword' type="password" className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditEmailAccount.mailPassword)} data-val="true" autoComplete="off" />
                                     </div>
                                     <span htmlFor="MailPassword" className="help-block error"></span>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <div className="col-lg-6">
-                                    <label>{Lang.AddEditEmailAccount.email}</label>
-                                    <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.Email || ''} name='Email' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditEmailAccount.email) } data-val="true" autoComplete="off" />
-                                    </div>
-                                    <span htmlFor="Email" className="help-block error"></span>
                                 </div>
                             </div>
                         </div>
