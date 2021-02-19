@@ -67,9 +67,7 @@ class DesignProcess extends React.Component {
                 window.setConfigBpmnModeler();
                 let delayTime = 2;
                 setTimeout(function () {
-                    // Set the right position of first diagram
-                    $('.viewport').attr("transform", "matrix(1,0,0,1,45,20)");
-                    window["bpmnModeler"].get('canvas').zoom('fit-viewport');
+                    window["bpmnModeler"].get('canvas').zoom('fit-viewport', 'auto');
                 }, delayTime);
             }
             catch {
@@ -169,7 +167,7 @@ class DesignProcess extends React.Component {
                         return console.error('could not import BPMN 2.0 diagram', err);
                     }
                     // zoom to fit full viewport
-                    window["bpmnModeler"].get('canvas').zoom('fit-viewport');
+                    window["bpmnModeler"].get('canvas').zoom('fit-viewport', 'auto');
                 });
             }
             // import xml
@@ -237,6 +235,7 @@ class DesignProcess extends React.Component {
             this.saveDesignXml(this.openConditionManagement);
         }
         else {
+            debugger;
             //to reload modal form i had two hide&show component to reload that
             await this.setState({ OpenGatewayManagment: false, ElementId: gatewayId });
             await this.setState({ OpenGatewayManagment: true });
@@ -334,7 +333,7 @@ class DesignProcess extends React.Component {
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-sm-12">
-                                        <div id="canvas" style={{ border: '1px solid', height: '700px' }}></div>
+                                        <div id="canvas" style={{ border: '1px solid', height: '600px' }}></div>
                                     </div>
                                 </div>
                             </div>

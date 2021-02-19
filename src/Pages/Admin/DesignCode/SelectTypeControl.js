@@ -15,7 +15,7 @@ class SelectTypeControl extends React.Component {
         return (
             <div className="input-group">
                 <input id="txtSelectedValueType" className="form-control" type="text" autoComplete="off" readOnly="readonly"
-                    data-value={this.props.Value} data-type={this.props.ValueType} value={this.props.Value} data-isselecttypevalue="true"
+                    data-value={this.props.Value} data-type={this.props.ValueType} defaultValue={this.props.Value} data-isselecttypevalue="true"
                     data-shapeid={this.props.ShapeID} data-dynamicformid={this.props.DynamicFormId} data-parentshapeid={this.props.ParentShapeID} data-isoutputyes={this.props.IsOutputYes} />
                 <div className="input-group-append">
                     <span className="input-group-text">

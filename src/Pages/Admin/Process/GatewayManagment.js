@@ -15,10 +15,12 @@ class GatewayManagment extends React.Component {
         this.loadForm = this.loadForm.bind(this);
         this.openDesignCode = this.openDesignCode.bind(this);
         this.conditionCodeCallBack = this.conditionCodeCallBack.bind(this);
+        this.selectedTr = null;
     }
     async componentDidMount() {
         window.conditionCodeCallBack = this.conditionCodeCallBack;
         //load data 
+
         let data = await new GatewayService().getConditions(this.props.processId, this.props.elementId);
         await this.setState({ ...data });
         this.loadForm();
@@ -33,25 +35,38 @@ class GatewayManagment extends React.Component {
     }
 
     addCondition() {
-        let table = $('#tblGatewayCondition');
-        let newRow = document.querySelector('.addCondition').cloneNode(true);
-        newRow.classList.remove('addStep');
-        newRow.style.removeProperty('display');
-        table.append(newRow);
-        newRow.querySelector('a.delete-row').onclick = this.removeRow;
-        newRow.querySelector('a#btnOpenDesignCode').onclick = this.openDesignCode;
+        let list = this.state.GetList;
+        list.push(
+            {
+                ID: '',
+                GatewayID: this.state.GatewayID,
+                SequenceFlowID: '',
+                Code: ''
+            });
 
-        window.setListModelBinding('tblGatewayCondition', 'ListConditions');
+        this.setState({ GetList: list }, function () {
+            window.setListModelBinding('tblGatewayCondition', 'ListConditions');
+        });
     }
 
-    removeRow(event) {
-        event.target.closest("tr").remove();
-        window.setListModelBinding('tblGatewayCondition', 'ListConditions');
+    async removeRow(event) {
+        let list = this.state.GetList;
+        //because of header tr, rowIndex of tr start from 1.
+        let index = event.target.closest("tr").rowIndex - 1;
+        if (index > -1) {
+            list.splice(index, 1);
+        }
+
+        this.setState({ GetList: list }, function () {
+            window.setListModelBinding('tblGatewayCondition', 'ListConditions');
+        });
+
     }
 
     async openDesignCode(event) {
-        await this.setState({ selectedTr: event.target.closest('tr') });
-        let designCode = this.state.selectedTr.querySelector("input[name*='.Code']").value;
+        this.selectedTr = event.target.closest('tr');
+        let designCode = this.selectedTr.querySelector("input[name*='.Code']").value;
+
         //to reload modal form i had two hide&show component to reload that
         await this.setState({ OpenConditionForm: false, DesignCode: designCode, DesignCodeCallBack: 'conditionCodeCallBack' });
         await this.setState({ OpenConditionForm: true });
@@ -59,8 +74,12 @@ class GatewayManagment extends React.Component {
     }
 
     conditionCodeCallBack(codeDesign, code) {
-        this.state.selectedTr.querySelector("input[name='Code']").value = window.getBusinessRuleName(codeDesign);
-        this.state.selectedTr.querySelector("input[name*='.Code']").value = codeDesign;
+        let list = this.state.GetList;
+        let condition = list[this.selectedTr.rowIndex - 1];
+        condition.Code = codeDesign;
+        this.setState({ GetList: list }, function () {
+            window.setListModelBinding('tblGatewayCondition', 'ListConditions');
+        });
     }
 
     async submitForm(event) {
@@ -95,36 +114,6 @@ class GatewayManagment extends React.Component {
                     <div className="modal-body modal-scroll">
                         <div className="bpms-table bpms-table-bordered  bpms-table-default  ">
                             <div className="table-information table-responsive">
-                                <table style={{ display: 'none' }}>
-                                    <tbody>
-                                        <tr className="addCondition">
-                                            <td>
-                                                <input name="ListItem.GatewayID" id="ListItem.GatewayID" type="hidden" defaultValue={this.state.GatewayID} />
-                                                <input name="ListItem.ID" id="ListItem.ID" type="hidden" defaultValue={""} />
-                                                <Select name="ListItem.SequenceFlowID" defaultValue="" id="ListItem.SequenceFlowID"
-                                                    listItem={this.state.SequenceFlows} optionKey="ID" optionLabel="Name" />
-                                            </td>
-                                            <td>
-                                                <div className="input-group">
-                                                    <div className="input-group-prepend">
-                                                        <span className="input-group-text">
-                                                            <a id="btnOpenDesignCode" href="javascript:;">
-                                                                <i className="fa fa-plus"></i>
-                                                            </a>
-                                                        </span>
-                                                    </div>
-                                                    <input type="text" className="form-control" name="Code" id="Code" readOnly={true} defaultValue="" />
-                                                </div>
-                                                <input name="ListItem.Code" id="ListItem.Code" type="hidden" defaultValue={""} />
-                                            </td>
-                                            <td>
-                                                <a href='javascript:;' className="delete-row btn btn btn-sm btn-clean btn-icon" title="Delete">
-                                                    <span className="svg-icon svg-icon-md"><i className="fad fa-trash-alt"></i></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                                 <table id="tblGatewayCondition" className="table">
                                     <thead>
                                         <tr>
@@ -141,9 +130,9 @@ class GatewayManagment extends React.Component {
                                         {
                                             this.state.GetList &&
                                             this.state.GetList.map((item, index) => {
-                                                return <tr key={item.ID} className="text-center" >
+                                                return <tr key={(item.ID == '' ? Math.random() : item.ID)} className="text-center" >
                                                     <td>
-                                                        <input name="ListItem.GatewayID" id="ListItem.GatewayID" type="hidden" defaultValue={item.TaskID} />
+                                                        <input name="ListItem.GatewayID" id="ListItem.GatewayID" type="hidden" defaultValue={item.GatewayID} />
                                                         <input name="ListItem.ID" id="ListItem.ID" type="hidden" defaultValue={item.ID} />
                                                         <Select name="ListItem.SequenceFlowID" defaultValue={item.SequenceFlowID || ''} id="ListItem.SequenceFlowID"
                                                             listItem={this.state.SequenceFlows} optionKey="ID" optionLabel="Name" />
@@ -152,7 +141,7 @@ class GatewayManagment extends React.Component {
                                                         <div className="input-group">
                                                             <div className="input-group-prepend">
                                                                 <span className="input-group-text">
-                                                                    <a id="btnOpenDesignCode" href="javascript:;" onClick={this.openDesignCode}>
+                                                                    <a id="btnOpenDesignCode" href="#" onClick={this.openDesignCode}>
                                                                         <i className="fa fa-plus"></i>
                                                                     </a>
                                                                 </span>
@@ -162,9 +151,9 @@ class GatewayManagment extends React.Component {
                                                         <input name="ListItem.Code" id="ListItem.Code" type="hidden" defaultValue={item.Code} />
                                                     </td>
                                                     <td>
-                                                        <a href='javascript:;' className="delete-row btn btn-sm btn-clean btn-icon" onClick={this.removeRow} title={Lang.Shared.delete}>
+                                                        <button type="button" className="delete-row btn btn-sm btn-clean btn-icon" onClick={this.removeRow} title={Lang.Shared.delete}>
                                                             <span className="svg-icon svg-icon-md"><i className="fad fa-trash-alt"></i></span>
-                                                        </a>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             })
@@ -173,9 +162,9 @@ class GatewayManagment extends React.Component {
                                 </table>
                             </div>
                         </div>
-                        <a href="javascript:;" className="btn btn-primary font-weight-bolder" onClick={this.addCondition}>
+                        <button type="button" className="btn btn-primary font-weight-bolder" onClick={this.addCondition}>
                             {Lang.GatewayManagment.new}
-                        </a>
+                        </button>
                     </div>
                     <div className="modal-footer">
                         {

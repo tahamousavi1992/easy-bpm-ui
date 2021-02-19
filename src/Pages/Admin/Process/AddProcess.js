@@ -52,14 +52,15 @@ class AddProcess extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddProcess.name}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.Name || ''} name='Name' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddProcess.name)} data-val="true" data-val-group="saveProcess" />
+                                        <input onChange={this.handelChange} value={this.state.Name || ''} name='Name' className="form-control required-field" 
+                                        data-val-required={Lang.requiredMsg(Lang.AddProcess.name)} data-val="true" data-val-group="saveProcess" autoComplete="off" />
                                     </div>
                                     <span htmlFor="Name" className="help-block error"></span>
                                 </div>
                                 <div className="col-lg-6">
                                     <label>{Lang.AddProcess.parallelCountPerUser}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.ParallelCountPerUser || ''} name='ParallelCountPerUser' className="form-control" />
+                                        <input onChange={this.handelChange} value={this.state.ParallelCountPerUser || ''} name='ParallelCountPerUser' className="form-control" autoComplete="off" />
                                     </div>
                                     <span htmlFor="ParallelCountPerUser" className="help-block error"></span>
                                 </div>

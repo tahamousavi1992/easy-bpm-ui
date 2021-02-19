@@ -101,7 +101,7 @@ class ConditionForm extends React.Component {
             if (this.state.OpenDirectly) {
                 let xmlCode = `<ArrayOfObjects>${this.getCode()}</ArrayOfObjects>`;
                 let result = await new DesignCodeService().doRenderCode(xmlCode, this.props.processId, this.props.applicationPageId, true, false);
-                let data = `﻿<?xml version="1.0" encoding="utf-16"?>
+                let data = `<?xml version="1.0" encoding="utf-16"?>
              <DesignCodeModel xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                <Code><![CDATA[${result.Code}]]></Code>
                <DesignCode><![CDATA[<ArrayOfObjects>${this.getCode()}</ArrayOfObjects>]]></DesignCode>

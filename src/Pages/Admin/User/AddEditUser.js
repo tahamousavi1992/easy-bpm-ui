@@ -67,14 +67,14 @@ class AddEditUser extends React.Component {
                                                 <div className="col-lg-6">
                                                     <label>{Lang.AddEditUser.username}</label>
                                                     <div className="input-group">
-                                                        <input onChange={this.handelChange} value={this.state.Username || ''} name='Username' className="form-control required-field" data-val-required="Username is required" data-val="true" />
+                                                        <input onChange={this.handelChange} value={this.state.Username || ''} name='Username' className="form-control required-field" data-val-required="Username is required" data-val="true" autoComplete="off" />
                                                     </div>
                                                     <span htmlFor="Username" className="help-block error"></span>
                                                 </div>
                                                 <div className="col-lg-6">
                                                     <label>{Lang.AddEditUser.email}</label>
                                                     <div className="input-group">
-                                                        <input onChange={this.handelChange} value={this.state.Email || ''} name='Email' className="form-control" />
+                                                        <input onChange={this.handelChange} value={this.state.Email || ''} name='Email' className="form-control" autoComplete="off" />
                                                     </div>
                                                     <span htmlFor="Email" className="help-block error"></span>
                                                 </div>
@@ -83,14 +83,14 @@ class AddEditUser extends React.Component {
                                                 <div className="col-lg-6">
                                                     <label>{Lang.AddEditUser.firstName}</label>
                                                     <div className="input-group">
-                                                        <input onChange={this.handelChange} value={this.state.FirstName || ''} name='FirstName' className="form-control required-field" data-val-required="FirstName is required" data-val="true" />
+                                                        <input onChange={this.handelChange} value={this.state.FirstName || ''} name='FirstName' className="form-control required-field" data-val-required="FirstName is required" data-val="true" autoComplete="off" />
                                                     </div>
                                                     <span htmlFor="FirstName" className="help-block error"></span>
                                                 </div>
                                                 <div className="col-lg-6">
                                                     <label>{Lang.AddEditUser.lastName}</label>
                                                     <div className="input-group">
-                                                        <input onChange={this.handelChange} value={this.state.LastName || ''} name='LastName' className="form-control required-field" data-val-required="LastName is required" data-val="true" />
+                                                        <input onChange={this.handelChange} value={this.state.LastName || ''} name='LastName' className="form-control required-field" data-val-required="LastName is required" data-val="true" autoComplete="off" />
                                                     </div>
                                                     <span htmlFor="LastName" className="help-block error"></span>
                                                 </div>
@@ -99,14 +99,14 @@ class AddEditUser extends React.Component {
                                                 <div className="col-lg-6">
                                                     <label>{Lang.AddEditUser.tel}</label>
                                                     <div className="input-group">
-                                                        <input onChange={this.handelChange} value={this.state.Tel || ''} name='Tel' className="form-control" />
+                                                        <input onChange={this.handelChange} value={this.state.Tel || ''} name='Tel' className="form-control" autoComplete="off" />
                                                     </div>
                                                     <span htmlFor="Tel" className="help-block error"></span>
                                                 </div>
                                                 <div className="col-lg-6">
                                                     <label>{Lang.AddEditUser.mobile}</label>
                                                     <div className="input-group">
-                                                        <input onChange={this.handelChange} value={this.state.Mobile || ''} name='Mobile' className="form-control" />
+                                                        <input onChange={this.handelChange} value={this.state.Mobile || ''} name='Mobile' className="form-control" autoComplete="off" />
                                                     </div>
                                                     <span htmlFor="Mobile" className="help-block error"></span>
                                                 </div>
@@ -117,7 +117,7 @@ class AddEditUser extends React.Component {
                                                     <div className="col-lg-6">
                                                         <label>{Lang.AddEditUser.password}</label>
                                                         <div className="input-group">
-                                                            <input onChange={this.handelChange} value={this.state.Password || ''} name='Password' className="form-control" />
+                                                            <input type="password" onChange={this.handelChange} value={this.state.Password || ''} name='Password' className="form-control" autoComplete="off" />
                                                         </div>
                                                         <span htmlFor="Password" className="help-block error"></span>
                                                     </div>
