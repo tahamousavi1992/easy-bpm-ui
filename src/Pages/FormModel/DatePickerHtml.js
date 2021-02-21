@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react'; 
+﻿import React, { useState } from 'react';
 import Lang from '../../Shared/CartableLang/Lang';
 const $ = window.$;
 export default function DatePickerHtml(props) {
@@ -17,7 +17,8 @@ export default function DatePickerHtml(props) {
                     <label dangerouslySetInnerHTML={{ __html: model.Label + helpText }}></label>
                     <div className="input-group">
                         <div className="input-group-prepend"><span className="input-group-text"><i className="fa fa-clock"></i></span></div>
-                        <input readOnly={model.IsReadonly} type="text" id={model.Id} name={model.Id} className={model.CssClass} data-parameter={model.Parameter} data-type={model.Type} defaultValue={(model.ShowType == 'date' ? (model.Value != null ? model.Value.split('T')[0] : '') : model.Value)}
+                        <input readOnly={model.IsReadonly} type="text" id={model.Id} name={model.Id} className={model.CssClass} data-parameter={model.Parameter} data-type={model.Type}
+                            defaultValue={(model.ShowType == 'date' ? (model.Value != null ? model.Value.split('T')[0] : '') : model.Value)} autoComplete="off"
                             {...model.EventDataAttributes.reduce((prev, curr) => { prev[curr.AttrName] = curr.FunctionName; return prev; }, {})} data-formid={model.DynamicFormID} data-val="true" data-val-group={model.ValidationGroup}
                             {...attr} data-showtype={model.ShowType} data-dateformat={model.DateFormat}
                         />

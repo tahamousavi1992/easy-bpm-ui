@@ -19,7 +19,7 @@ class AdminRightMenu extends React.Component {
 
                     <div className="brand flex-column-auto" >
                         <a href="#" className="brand-logo">
-                            <img alt="Logo" src={'~/DesktopModules/MVC/DynamicBusiness.Bpms/Resources/assets/media/logo/logo.png'} />
+                            <img alt="Logo" src={'/DesktopModules/MVC/DynamicBusiness.Bpms/Resources/assets/media/logo/logo.png'} />
                         </a>
                         <button className="brand-toggle btn btn-sm px-0" id="sk_aside_toggle" type="button">
                             <i className="fa fa-angle-left fa-lg" ></i>

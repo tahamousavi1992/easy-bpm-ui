@@ -21,7 +21,7 @@ class CartableRightMenu extends React.Component {
                 <div className="aside aside-left  aside-fixed  d-flex flex-column flex-row-auto" id="sk_aside">
                     <div className="brand flex-column-auto" >
                         <a href="#" className="brand-logo">
-                            <img alt="Logo" src={'~/DesktopModules/MVC/DynamicBusiness.Bpms/Resources/assets/media/logo/logo.png'} />
+                            <img alt="Logo" src={'/DesktopModules/MVC/DynamicBusiness.Bpms/Resources/assets/media/logo/logo.png'} />
                         </a>
                         <button className="brand-toggle btn btn-sm px-0" id="sk_aside_toggle" type="button">
                             <i className="fa fa-angle-right fa-lg" ></i>

@@ -43,7 +43,7 @@ export default function TextBoxHtml(props) {
                         {
                             !model.IsMultiline &&
                             <input rows="3" type={model.InputType} placeholder={model.PlaceHolderText} readOnly={model.IsReadonly} id={model.Id} name={model.Id} className={model.CssClass} data-parameter={model.Parameter} data-type={model.Type} defaultValue={model.Value}
-                                data-val-group={model.ValidationGroup} data-val="true"   {...model.EventDataAttributes.reduce((prev, curr) => { prev[curr.AttrName] = curr.FunctionName; return prev; }, {})} data-formid={model.DynamicFormID}
+                                data-val-group={model.ValidationGroup} data-val="true" autoComplete="off" {...model.EventDataAttributes.reduce((prev, curr) => { prev[curr.AttrName] = curr.FunctionName; return prev; }, {})} data-formid={model.DynamicFormID}
                                 {...attr} />
                         }
                     </div>

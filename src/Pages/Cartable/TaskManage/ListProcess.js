@@ -95,9 +95,9 @@ class ListProcess extends React.Component {
                                                                     {item.Description}
                                                                 </td>
                                                                 <td className="text-center"> 
-                                                                    <a href="javascript:;" onClick={() => this.beginTask(item.ID)} className="btn btn-sm btn-clean btn-icon" title={Lang.ListProcess.beginTask}>
-                                                                        <span className="svg-icon svg-icon-md"><i className="fad fa-plus-square"></i></span>
-                                                                    </a>
+                                                                    <button type="button" onClick={() => this.beginTask(item.ID)} className="btn btn-sm btn-clean btn-icon" title={Lang.ListProcess.beginTask}>
+                                                                        <span className="svg-icon svg-icon-md"><i className="fad fa-play"></i></span>
+                                                                    </button>
                                                                 </td>
                                                             </tr>
                                                         })
