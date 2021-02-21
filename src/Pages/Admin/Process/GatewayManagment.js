@@ -15,7 +15,7 @@ class GatewayManagment extends React.Component {
         this.loadForm = this.loadForm.bind(this);
         this.openDesignCode = this.openDesignCode.bind(this);
         this.conditionCodeCallBack = this.conditionCodeCallBack.bind(this);
-        this.selectedTr = null;
+        this.selectedTrIndex = -1;
     }
     async componentDidMount() {
         window.conditionCodeCallBack = this.conditionCodeCallBack;
@@ -40,7 +40,7 @@ class GatewayManagment extends React.Component {
             {
                 ID: '',
                 GatewayID: this.state.GatewayID,
-                SequenceFlowID: '',
+                SequenceFlowID: '-1',
                 Code: ''
             });
 
@@ -64,9 +64,8 @@ class GatewayManagment extends React.Component {
     }
 
     async openDesignCode(event) {
-        this.selectedTr = event.target.closest('tr');
-        let designCode = this.selectedTr.querySelector("input[name*='.Code']").value;
-
+        this.selectedTrIndex = event.target.closest('tr').rowIndex;
+        let designCode = event.target.closest('tr').querySelector("input[name*='.Code']").value;
         //to reload modal form i had two hide&show component to reload that
         await this.setState({ OpenConditionForm: false, DesignCode: designCode, DesignCodeCallBack: 'conditionCodeCallBack' });
         await this.setState({ OpenConditionForm: true });
@@ -75,7 +74,7 @@ class GatewayManagment extends React.Component {
 
     conditionCodeCallBack(codeDesign, code) {
         let list = this.state.GetList;
-        let condition = list[this.selectedTr.rowIndex - 1];
+        let condition = list[this.selectedTrIndex - 1];
         condition.Code = codeDesign;
         this.setState({ GetList: list }, function () {
             window.setListModelBinding('tblGatewayCondition', 'ListConditions');
@@ -130,7 +129,7 @@ class GatewayManagment extends React.Component {
                                         {
                                             this.state.GetList &&
                                             this.state.GetList.map((item, index) => {
-                                                return <tr key={(item.ID == '' ? Math.random() : item.ID)} className="text-center" >
+                                                return <tr key={index} className="text-center" >
                                                     <td>
                                                         <input name="ListItem.GatewayID" id="ListItem.GatewayID" type="hidden" defaultValue={item.GatewayID} />
                                                         <input name="ListItem.ID" id="ListItem.ID" type="hidden" defaultValue={item.ID} />

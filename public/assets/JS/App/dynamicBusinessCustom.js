@@ -452,7 +452,7 @@ function reInitTabs(containerId, ulId) {
         }
     });
 }
- 
+
 $(document).ready(function () {
     initAllComboSearchs();
 });
@@ -501,7 +501,7 @@ function dataMessageToObject(result) {
         return JSON.parse($(result).find('#bpmsData').html().trim())
     else return null;
 }
- 
+
 //CKEditor
 //this put value in code editor
 function insertAtCaret(element, text) {
@@ -614,9 +614,24 @@ function getBusinessRuleName(value) {
     return trimEndChar(result, ',');
 }
 function selectVariable(varSelected) {
-    window.selectedTarget.value = varSelected;
+    
     if (window.selectedTarget.getAttribute('onchange') != null) {
+        window.selectedTarget.value = varSelected;
         window.selectedTarget.onchange();
+    }
+    else {
+       
+        try{
+             //for firing react onchange event, I add this piece of code to add value in different way 
+             //and call change event after that.
+            let nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
+            nativeInputValueSetter.call(window.selectedTarget, varSelected);
+            let ev2 = new Event('change', { bubbles: true });
+            window.selectedTarget.dispatchEvent(ev2);
+        }
+        catch{
+            window.selectedTarget.value = varSelected;
+        }
     }
 }
 //clear variable input

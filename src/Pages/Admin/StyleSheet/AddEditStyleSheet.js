@@ -50,7 +50,7 @@ class AddEditStyleSheet extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditStyleSheet.fileName}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.FileName || ''} name='FileName' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditStyleSheet.fileName)} data-val="true" />
+                                        <input onChange={this.handelChange} value={this.state.FileName || ''} name='FileName' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditStyleSheet.fileName)} data-val="true" autoComplete="off" />
                                     </div>
                                     <span htmlFor="FileName" className="help-block error"></span>
                                 </div>

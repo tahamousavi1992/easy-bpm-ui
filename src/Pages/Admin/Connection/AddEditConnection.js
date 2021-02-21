@@ -58,14 +58,14 @@ class AddEditConnection extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditConnection.name}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.Name || ''} name='Name' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditConnection.name)} data-val="true" />
+                                        <input onChange={this.handelChange} value={this.state.Name || ''} name='Name' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditConnection.name)} data-val="true" autoComplete="off" />
                                     </div>
                                     <span htmlFor="Name" className="help-block error"></span>
                                 </div>
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditConnection.dataSource}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.DataSource || ''} name='DataSource' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditConnection.dataSource)} data-val="true" />
+                                        <input onChange={this.handelChange} value={this.state.DataSource || ''} name='DataSource' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditConnection.dataSource)} data-val="true" autoComplete="off" />
                                     </div>
                                     <span htmlFor="DataSource" className="help-block error"></span>
                                 </div>
@@ -74,14 +74,14 @@ class AddEditConnection extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditConnection.initialCatalog}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.InitialCatalog || ''} name='InitialCatalog' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditConnection.initialCatalog)} data-val="true" />
+                                        <input onChange={this.handelChange} value={this.state.InitialCatalog || ''} name='InitialCatalog' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditConnection.initialCatalog)} data-val="true" autoComplete="off" />
                                     </div>
                                     <span htmlFor="InitialCatalog" className="help-block error"></span>
                                 </div>
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditConnection.userID}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.UserID || ''} name='UserID' className="form-control" />
+                                        <input onChange={this.handelChange} value={this.state.UserID || ''} name='UserID' className="form-control" autoComplete="off" />
                                     </div>
                                     <span htmlFor="UserID" className="help-block error"></span>
                                 </div>
@@ -90,7 +90,7 @@ class AddEditConnection extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditConnection.password}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.Password || ''} name='Password' className="form-control" />
+                                        <input onChange={this.handelChange} value={this.state.Password || ''} type="password" name='Password' className="form-control" autoComplete="off" />
                                     </div>
                                     <span htmlFor="Password" className="help-block error"></span>
                                 </div>

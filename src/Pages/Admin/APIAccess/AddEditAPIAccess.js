@@ -50,14 +50,14 @@ class AddEditAPIAccess extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditAPIAccess.name}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.Name || ''} name='Name' className="form-control required-field" data-val-required="Name is required" data-val="true" />
+                                        <input onChange={this.handelChange} value={this.state.Name || ''} name='Name' className="form-control required-field" autoComplete="off" data-val-required="Name is required" data-val="true" />
                                     </div>
                                     <span htmlFor="Name" className="help-block error"></span>
                                 </div>
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditAPIAccess.ipAddress}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.IPAddress || ''} name='IPAddress' className="form-control" />
+                                        <input onChange={this.handelChange} value={this.state.IPAddress || ''} name='IPAddress' className="form-control" autoComplete="off" />
                                     </div>
                                     <span htmlFor="IPAddress" className="help-block error"></span>
                                 </div>
@@ -66,7 +66,7 @@ class AddEditAPIAccess extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditAPIAccess.accessKey}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.AccessKey || ''} name='AccessKey' className="form-control required-field" data-val-required="Access Key is required" data-val="true" />
+                                        <input onChange={this.handelChange} value={this.state.AccessKey || ''} name='AccessKey' className="form-control required-field" autoComplete="off" data-val-required="Access Key is required" data-val="true" />
                                     </div>
                                     <span htmlFor="AccessKey" className="help-block error"></span>
                                 </div>

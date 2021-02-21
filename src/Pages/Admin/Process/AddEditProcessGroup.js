@@ -49,7 +49,7 @@ class AddEditProcessGroup extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditProcessGroup.name}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.Name || ''} name='Name' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditProcessGroup.name)} data-val="true" data-val-group="saveGroup" />
+                                        <input onChange={this.handelChange} value={this.state.Name || ''} name='Name' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditProcessGroup.name)} data-val="true" data-val-group="saveGroup" autoComplete="off" />
                                     </div>
                                     <span htmlFor="Name" className="help-block error"></span>
                                 </div>

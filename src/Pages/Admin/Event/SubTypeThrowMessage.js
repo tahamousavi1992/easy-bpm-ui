@@ -187,7 +187,7 @@ class SubTypeThrowMessage extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.SubTypeThrowMessage.type }</label>
                                     <div className="input-group">
-                                        <Select name="ddlSubTypeMessageEventModelType" defaultValue={this.state.Model.SubTypeMessageEventModel.Type || ''} handelChange={this.changeTypeOfMessage}
+                                        <Select name="ddlSubTypeMessageEventModelType" id="ddlSubTypeMessageEventModelType" defaultValue={this.state.Model.SubTypeMessageEventModel.Type || ''} handelChange={this.changeTypeOfMessage}
                                             listItem={this.state.SubTypeMessageEventModelTypes} optionKey="Key" optionLabel="Value" />
                                     </div>
                                 </div>
@@ -216,7 +216,7 @@ class SubTypeThrowMessage extends React.Component {
                                                 //if is SubTypeMessageEventModel.e_KeyType.Variable 
                                                 (this.state.Model.SubTypeMessageEventModel.KeyType == 1 ? this.state.Model.SubTypeMessageEventModel.Key : "")} />
                                         </div>
-                                        <input type="text" id="KeyStatic" name="KeyStatic" className="form-control required-field" defaultValue={
+                                        <input type="text" id="KeyStatic" autoComplete="off" name="KeyStatic" className="form-control required-field" defaultValue={
                                             //if is SubTypeMessageEventModel.e_KeyType.Static
                                             (this.state.Model.SubTypeMessageEventModel.KeyType == 2 ? this.state.Model.SubTypeMessageEventModel.Key : "")} style={{ display: "none" }} />
                                     </div>
@@ -309,7 +309,7 @@ class SubTypeThrowMessage extends React.Component {
                                                 <Select name="ToSystemic" id="ToSystemic" defaultValue={(this.state.Model.SubTypeMessageEventModel.Email.ToType == 3 ? this.state.Model.SubTypeMessageEventModel.Email.To : '') || ''}
                                                     listItem={this.state.SubTypeEmailEventModelToSystemicTypes} optionKey="Key" optionLabel="Value" style={{ display: "none" }} />
 
-                                                <input type="text" id="ToStatic" name="ToStatic" className="form-control" defaultValue={(this.state.Model.SubTypeMessageEventModel.Email.ToType == 1 ? this.state.Model.SubTypeMessageEventModel.Email.To : "")} style={{ display: "none" }} />
+                                                <input type="text" id="ToStatic" name="ToStatic" className="form-control" defaultValue={(this.state.Model.SubTypeMessageEventModel.Email.ToType == 1 ? this.state.Model.SubTypeMessageEventModel.Email.To : "")} style={{ display: "none" }} autoComplete="off" />
                                             </div>
                                         </div>
                                     </div>
@@ -317,7 +317,7 @@ class SubTypeThrowMessage extends React.Component {
                                         <div className="col-lg-6">
                                             <label>{Lang.SubTypeThrowMessage.subject}</label>
                                             <div className="input-group">
-                                                <input type="text" id="SubTypeMessageEventModel.Email.Subject" name="SubTypeMessageEventModel.Email.Subject" className="form-control" defaultValue={this.state.Model.SubTypeMessageEventModel.Email.Subject || ''} />
+                                                <input type="text" id="SubTypeMessageEventModel.Email.Subject" name="SubTypeMessageEventModel.Email.Subject" className="form-control" defaultValue={this.state.Model.SubTypeMessageEventModel.Email.Subject || ''} autoComplete="off" />
                                                 <div className="input-group-append">
                                                     <span className="input-group-text">
                                                         <a onClick={(e) => { this.openVariableContent('SubTypeMessageEventModel.Email.Subject'); }} href="javascript:;" style={{ textDecoration: 'none' }}>

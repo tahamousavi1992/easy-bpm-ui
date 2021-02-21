@@ -49,14 +49,14 @@ class AddEditDepartment extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditDepartment.name}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.Name || ''} name='Name' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditDepartment.name)} data-val="true" />
+                                        <input onChange={this.handelChange} value={this.state.Name || ''} name='Name' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditDepartment.name)} data-val="true" autoComplete="off" />
                                     </div>
                                     <span htmlFor="Name" className="help-block error"></span>
                                 </div>
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditDepartment.workEmail}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.WorkEmail || ''} name='WorkEmail' className="form-control" />
+                                        <input onChange={this.handelChange} value={this.state.WorkEmail || ''} name='WorkEmail' className="form-control" autoComplete="off" />
                                     </div>
                                     <span htmlFor="WorkEmail" className="help-block error"></span>
                                 </div>
@@ -65,14 +65,14 @@ class AddEditDepartment extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditDepartment.smpt}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.SMTP || ''} name='SMTP' className="form-control" />
+                                        <input onChange={this.handelChange} value={this.state.SMTP || ''} name='SMTP' className="form-control" autoComplete="off" />
                                     </div>
                                     <span htmlFor="SMTP" className="help-block error"></span>
                                 </div>
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditDepartment.port}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.Port || ''} name='Port' className="form-control" />
+                                        <input onChange={this.handelChange} value={this.state.Port || ''} name='Port' className="form-control" autoComplete="off" />
                                     </div>
                                     <span htmlFor="Port" className="help-block error"></span>
                                 </div>
@@ -81,7 +81,7 @@ class AddEditDepartment extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditDepartment.emailPassword}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.MailPassword || ''} type='password' name='MailPassword' className="form-control" />
+                                        <input onChange={this.handelChange} value={this.state.MailPassword || ''} type='password' name='MailPassword' className="form-control" autoComplete="off" />
                                     </div>
                                     <span htmlFor="MailPassword" className="help-block error"></span>
                                 </div>

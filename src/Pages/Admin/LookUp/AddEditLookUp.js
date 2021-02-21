@@ -50,14 +50,14 @@ class AddEditLookUp extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditLookUp.name}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.NameOf || ''} name='NameOf' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditLookUp.name)} data-val="true" />
+                                        <input onChange={this.handelChange} value={this.state.NameOf || ''} name='NameOf' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditLookUp.name)} data-val="true" autoComplete="off" />
                                     </div>
                                     <span htmlFor="NameOf" className="help-block error"></span>
                                 </div>
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditLookUp.displayOrder}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.DisplayOrder || ''} name='DisplayOrder' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditLookUp.displayOrder)} data-val="true" />
+                                        <input onChange={this.handelChange} value={this.state.DisplayOrder || ''} name='DisplayOrder' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditLookUp.displayOrder)} data-val="true" autoComplete="off" />
                                     </div>
                                     <span htmlFor="DisplayOrder" className="help-block error"></span>
                                 </div>
@@ -66,7 +66,7 @@ class AddEditLookUp extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditLookUp.code}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.CodeOf || ''} name='CodeOf' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditLookUp.code)} data-val="true" />
+                                        <input onChange={this.handelChange} value={this.state.CodeOf || ''} name='CodeOf' className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditLookUp.code)} data-val="true" autoComplete="off" />
                                     </div>
                                     <span htmlFor="CodeOf" className="help-block error"></span>
                                 </div>

@@ -210,14 +210,14 @@ class AddEditVariable extends React.Component {
                                     <div className="col-lg-6">
                                         <label>{Lang.AddEditVariable.name}</label>
                                         <div className="input-group">
-                                            <input defaultValue={this.state.Model.Name || ''} name='Name' id="Name" className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditVariable.name)} data-val="true" data-val-group="saveVariableForm" />
+                                            <input defaultValue={this.state.Model.Name || ''} name='Name' id="Name" className="form-control required-field" data-val-required={Lang.requiredMsg(Lang.AddEditVariable.name)} data-val="true" data-val-group="saveVariableForm" autoComplete="off" />
                                         </div>
                                         <span htmlFor="Name" className="help-block error"></span>
                                     </div>
                                     <div className="col-lg-6">
                                         <label>{Lang.AddEditVariable.defaultValue}</label>
                                         <div className="input-group">
-                                            <input defaultValue={this.state.Model.DefaultValue || ''} name='DefaultValue' id="DefaultValue" className="form-control" />
+                                            <input defaultValue={this.state.Model.DefaultValue || ''} name='DefaultValue' id="DefaultValue" className="form-control" autoComplete="off" />
                                         </div>
                                         <span htmlFor="DefaultValue" className="help-block error"></span>
                                     </div>
@@ -273,14 +273,14 @@ class AddEditVariable extends React.Component {
                                         <div className="col-lg-6">
                                             <label>{Lang.AddEditVariable.whereClause}</label>
                                             <div className="input-group">
-                                                <input defaultValue={this.state.Model.WhereClause || ''} name='WhereClause' id="WhereClause" className="form-control" />
+                                                <input defaultValue={this.state.Model.WhereClause || ''} name='WhereClause' id="WhereClause" className="form-control" autoComplete="off" />
                                             </div>
                                             <span htmlFor="WhereClause" className="help-block error"></span>
                                         </div>
                                         <div className="col-lg-6">
                                             <label>{Lang.AddEditVariable.orderBy}</label>
                                             <div className="input-group">
-                                                <input defaultValue={this.state.Model.OrderByClause || ''} name='OrderByClause' id="OrderByClause" className="form-control" />
+                                                <input defaultValue={this.state.Model.OrderByClause || ''} name='OrderByClause' id="OrderByClause" className="form-control" autoComplete="off" />
                                             </div>
                                             <span htmlFor="OrderByClause" className="help-block error"></span>
                                         </div>
@@ -314,7 +314,7 @@ class AddEditVariable extends React.Component {
                                                                 listItem={[]} optionKey="Name" optionLabel="Name" />
                                                         </td>
                                                         <td>
-                                                            <input name='_DependencyModel.Description' defaultValue="" className="form-control" />
+                                                            <input name='_DependencyModel.Description' defaultValue="" className="form-control" autoComplete="off" />
                                                         </td>
                                                         <td >
                                                             <a href='javascript:;' className="delete-row btn btn-sm btn-clean btn-icon btn-icon-md" title={Lang.Shared.delete} onClick={this.removeRow}>
@@ -363,7 +363,7 @@ class AddEditVariable extends React.Component {
                                                                         listItem={item.GetToVariableProperties} optionKey="Name" optionLabel="Name" />
                                                                 </td>
                                                                 <td >
-                                                                    <input name='item.Description' id="_DependencyModel.Description" defaultValue={item.Description} className="form-control" />
+                                                                    <input name='item.Description' id="_DependencyModel.Description" defaultValue={item.Description} className="form-control" autoComplete="off" />
                                                                 </td>
                                                                 <td >
                                                                     <a href="javascript:;" className="delete-row btn btn-sm btn-clean btn-icon" title={Lang.Shared.delete} onClick={this.removeRow}>
