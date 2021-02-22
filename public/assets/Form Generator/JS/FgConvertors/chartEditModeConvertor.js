@@ -137,10 +137,12 @@ class FgChartEditModeConvertor extends ElementEditModeConvertor {
 
     //create a dropdown list for binding label data variable.
     static createBindingFillLabelComboDiv_EditPopUp(element) {
-        var bindingFillElement = element.attr("data-chartFillListLabel");
-        var elementAttribute = FgCommon.createSelectVariableHtmlElement(idElementEditForm.bindingChartFillListLabel, bindingFillElement);
+        let bindingFillElement = element.attr("data-chartFillListLabel");
+        let elementAttribute = FgCommon.createInputControl(idElementEditForm.bindingChartFillListLabel, bindingFillElement);
         elementAttribute.attr("type", "text");
-        var formGroup = FgCommon.createDefaultColForElementAttribute_EditPopUp(elementAttribute, lang.FG.chartBindingFillLabelComboDiv, "fa fa-text-width", null, "col-sm-6");
+        elementAttribute.attr("data-isListVariable", "true");
+        elementAttribute.attr("readonly", "readonly");
+        let formGroup = FgCommon.createDefaultColForElementAttribute_EditPopUp(elementAttribute, lang.FG.chartBindingFillLabelComboDiv, "fa fa-text-width", null, "col-sm-6");
         formGroup.find('.input-group').append(FgCommon.createAddVariableButton(idElementEditForm.addVariableLinkForFillList, idElementEditForm.bindingChartFillListLabel));
         return formGroup;
     }
@@ -354,15 +356,7 @@ class FgChartEditModeConvertor extends ElementEditModeConvertor {
     static createPieColorDiv_EditPopUp(element) {
         let divContainer = document.createElement('div');
         divContainer.innerHTML = `<a href="javascript:;" class="btn btn-primary font-weight-bolder"  id="btnAddNewPieColor" return false;">
-  <span class="svg-icon svg-icon-md">
-      <!--begin::Svg Icon--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-              <rect x="0" y="0" width="24" height="24"></rect>
-              <circle fill="#000000" cx="9" cy="15" r="6"></circle>
-              <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3"></path>
-          </g>
-      </svg><!--end::Svg Icon-->
-  </span>${lang.FG.chartNewPieChart}`;
+  ${lang.FG.chartNewPieChart}</a>`;
         var elementAttribute = FgChartEditModeConvertor.createPieColorTableControl(element.attr("data-pieColorName"));
         divContainer.innerHTML += '<div class="bpms-table bpms-table-bordered  bpms-table-default bpms-table-primary bpms-table-loaded mt-2"><div class="table-information table-responsive">' + elementAttribute.outerHTML + '</div></div>';
         let formGroup = FgCommon.createDefaultColForElementAttributeWithoutInputGroup_EditPopUp(divContainer, "col-sm-6");
