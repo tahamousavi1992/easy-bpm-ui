@@ -380,7 +380,11 @@ By double-clicking on any shape(action), you can specify the activity associated
         tbl_th_key: 'key',
         newRelation: 'Add Relation',
     },
-
+    ExecuteQuery: {
+        caption: 'Sql Query',
+        query: 'Query',
+        Run: 'Run',
+    },
     AddEditEvent:
     {
         caption: 'Event Setting',

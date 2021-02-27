@@ -3,6 +3,7 @@ import Paging from '../../../Components/Paging';
 import EntityDefService from '../../../Services/EntityDefService';
 import UtilityService from '../../../Services/UtilityService';
 import AddEditEntityDef from './AddEditEntityDef';
+import ExecuteQuery from './ExecuteQuery';
 import Lang from '../../../Shared/AdminLang/Lang';
 class EntityDefList extends React.Component {
     constructor() {
@@ -187,6 +188,9 @@ class EntityDefList extends React.Component {
                 </div>
                 <div id="divAddEdit" className="modal fade" role="dialog">
                     {this.state.OpenAddEdit && <AddEditEntityDef callBack={this.callBackFromAddEdit} addEditId={this.state.AddEditId}></AddEditEntityDef>}
+                </div>
+                <div id="divExecute" className="modal fade" role="dialog">
+                    {this.state.OpenExecute && <ExecuteQuery addEditId={this.state.AddEditId}></ExecuteQuery>}
                 </div>
             </div>
         );
