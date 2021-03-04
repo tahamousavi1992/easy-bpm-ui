@@ -9,9 +9,9 @@
  * Source Code: https://github.com/bpmn-io/bpmn-js
  *
  * Date: 2020-06-08
- */
-
-setTimeout(function () {
+ */ 
+//taha edit: add load_process_designer
+function load_process_designer(){
 
 	(function (global, factory) {
 		typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -56697,4 +56697,4 @@ setTimeout(function () {
 
 	}));
 
-}, 500);
+};

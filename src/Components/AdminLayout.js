@@ -47,7 +47,7 @@ class AdminLayout extends React.Component {
                 <div id="sk_header_mobile" className="header-mobile align-items-center  header-mobile-fixed ">
 
                     <a href="#">
-                        <img alt="Logo" src="assets/media/logo/logo.png" />
+                        <img alt="Logo" src={'/DesktopModules/MVC/DynamicBusiness.Bpms/Resources/assets/media/logo/logo.png'} />
                     </a>
 
                     <div className="d-flex align-items-center">

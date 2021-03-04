@@ -47,7 +47,8 @@ class DesignProcess extends React.Component {
         window.openVariableList = this.openSelectVariable;
         this.props.setPageCaption(2, [Lang.Menu.DesignProcess, Lang.Menu.ProcessList, Lang.Menu.management], true, this.props.match.params.Id, null, this.backToFunction);
         window.setConfigBpmnModeler = this.setConfigBpmnModeler;
-        this.loadForm();
+
+        window.addEventListener('load', this.loadForm);
     }
 
     handelChange = (event) => { this.setState(UtilityService.handelChange(event)); }
@@ -57,23 +58,23 @@ class DesignProcess extends React.Component {
     }
 
     async loadForm() {
+        //This function is defined in bpmn-modeler.development.js and due to window.BpmnIoLang null refrence is loaded after all.
+        window.load_process_designer();
         //load data 
         let data = await new ProcessService().getDesignerIndex(this.props.match.params.Id);
         window.processDesignerModel = data;
         await this.setState({ ...data });
 
-        setTimeout(function () {
-            try {
-                window.setConfigBpmnModeler();
-                let delayTime = 2;
-                setTimeout(function () {
-                    window["bpmnModeler"].get('canvas').zoom('fit-viewport', 'auto');
-                }, delayTime);
-            }
-            catch {
+        try {
+            window.setConfigBpmnModeler();
+            let delayTime = 2;
+            setTimeout(function () {
+                window["bpmnModeler"].get('canvas').zoom('fit-viewport', 'auto');
+            }, delayTime);
+        }
+        catch {
 
-            }
-        }, 500);
+        }
 
         $('body').on("click", function (e) {
 
