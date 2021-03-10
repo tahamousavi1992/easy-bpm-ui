@@ -41,7 +41,7 @@ class VariableControl extends React.Component {
     }
     async componentDidMount() {
         document.querySelectorAll('.varListOpener a').forEach((item) => {
-            item.setAttribute('onclick', 'window.openVariableList(this);');
+            item.setAttribute('onclick', 'window.openVariableList(this); return false');
         });
     }
     render() {
@@ -52,7 +52,7 @@ class VariableControl extends React.Component {
                 <span onClick={(e) => { window.clearVariableInput(e.target); }} className='form-control-feedback fa fa-times-circle-o'></span>
                 <div className='input-group-append'>
                     <span className='input-group-text'>
-                        <a href='javascript:;' style={{ text_decoration: "none" }}>
+                        <a href='#' style={{ text_decoration: "none" }}>
                             <i className='fa fa-plus'></i>
                         </a>
                     </span>
@@ -72,8 +72,8 @@ class RadioList extends React.Component {
                     {
                         this.props.listItem && this.props.listItem.map((item, index) => {
                             return <React.Fragment key={index}>
-                                <div class="radio-inline">
-                                    <label class="radio">
+                                <div className="radio-inline">
+                                    <label className="radio">
                                         <input type="radio" name={this.props.name} defaultChecked={this.props.defaultValue == item[this.props.optionKey]} id={this.props.id}
                                             defaultValue={item[this.props.optionKey]} onChange={this.props.handelChange} style={this.props.style} /><span></span>{item[this.props.optionLabel]}
                                     </label>
@@ -88,8 +88,8 @@ class RadioList extends React.Component {
                     {
                         this.props.listItem && this.props.listItem.map((item, index) => {
                             return <React.Fragment key={index}>
-                                <div class="radio-inline">
-                                    <label class="radio">
+                                <div className="radio-inline">
+                                    <label className="radio">
                                         <input type="radio" name={this.props.name} checked={this.props.value == item[this.props.optionKey]} id={this.props.id}
                                             value={item[this.props.optionKey]} onChange={this.props.handelChange} style={this.props.style} />
                                         <span></span>{item[this.props.optionLabel]}

@@ -9,9 +9,9 @@
  * Source Code: https://github.com/bpmn-io/bpmn-js
  *
  * Date: 2020-06-08
- */ 
+ */
 //taha edit: add load_process_designer
-function load_process_designer(){
+function load_process_designer() {
 
 	(function (global, factory) {
 		typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -34371,7 +34371,7 @@ function load_process_designer(){
 			//		eventDefinitionType: 'bpmn:SignalEventDefinition'
 			//	}
 			//},
-			
+
 			//{
 			//	//label: 'Compensation Boundary Event',
 			//	label: window.BpmnIoLang.CompensationBoundaryEvent,
@@ -35871,7 +35871,50 @@ function load_process_designer(){
 						}
 					}
 				});
+			} 
+			//start Taha Edit
+			if (businessObject.$type !== 'bpmn:SequenceFlow' &&
+				businessObject.$type !== 'bpmn:Group' &&
+				businessObject.$type !== 'bpmn:StartEvent' &&
+				businessObject.$type !== 'bpmn:StartEvent') {
+				assign(actions, {
+					'edit': {
+						group: 'edit',
+						className: 'fa fa-edit',
+						title: 'Edit',
+						action: {
+							click: function () {
+								switch (businessObject.$type) {
+									case 'bpmn:UserTask':
+										document.getElementById('lnkShowUseTask').click();
+										break;
+									case 'bpmn:Task"':
+									case 'bpmn:ReceiveTask"':
+									case 'bpmn:SendTask"':
+									case 'bpmn:ManualTask"':
+									case 'bpmn:ServiceTask"':
+									case 'bpmn:ScriptTask"':
+										document.getElementById('lnkShowServiceTaskManagement').click();
+										break;
+									case 'bpmn:ExclusiveGateway':
+									case 'bpmn:ParallelGateway':
+									case 'bpmn:InclusiveGateway':
+										document.getElementById('lnkShowConditionManagement').click();
+										break;
+									case 'bpmn:IntermediateThrowEvent':
+									case 'bpmn:IntermediateCatchEvent':
+									case 'bpmn:BoundaryEvent':
+									case 'bpmn:StartEvent':
+									case 'bpmn:EndEvent':
+										document.getElementById('lnkShowEventManagement').click();
+										break;
+								}
+							}
+						}
+					}
+				});
 			}
+			//end Taha Edit
 
 			return actions;
 		};
@@ -54609,7 +54652,7 @@ function load_process_designer(){
 				// 		click: createParticipant
 				// 	}
 				// },
-			    //end taha
+				//end taha
 				'create.group': createAction(
 					'bpmn:Group', 'artifact', 'bpmn-icon-group',
 					translate('Create Group')
@@ -55515,9 +55558,9 @@ function load_process_designer(){
 					y: docking.y - event.y
 				}
 			) : {
-					x: docking.x,
-					y: docking.y
-				};
+				x: docking.x,
+				y: docking.y
+			};
 		}
 
 		var HIGHER_PRIORITY$4 = 1250;

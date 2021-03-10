@@ -48,7 +48,11 @@ class DesignProcess extends React.Component {
         this.props.setPageCaption(2, [Lang.Menu.DesignProcess, Lang.Menu.ProcessList, Lang.Menu.management], true, this.props.match.params.Id, null, this.backToFunction);
         window.setConfigBpmnModeler = this.setConfigBpmnModeler;
 
-        window.addEventListener('load', this.loadForm);
+        //if languages file was loaded before, call loadForm.
+        if (window.BpmnIoLang != null)
+            this.loadForm();
+        else
+            window.addEventListener('load', this.loadForm);
     }
 
     handelChange = (event) => { this.setState(UtilityService.handelChange(event)); }
@@ -80,7 +84,7 @@ class DesignProcess extends React.Component {
 
             var element = e.target;
             // Check click on operation links
-            if ($(element).attr('id') == 'lnkShowFormGeneration'
+            if ($(element).attr('id') == 'lnkShowUseTask'
                 || $(element).attr('id') == 'lnkShowConditionManagement'
                 || $(element).attr('id') == 'lnkShowEventManagement'
                 || $(element).attr('id') == 'lnkShowServiceTaskManagement')
@@ -90,7 +94,7 @@ class DesignProcess extends React.Component {
             if ($(element).hasClass('djs-element')) {
                 el = element;
             }
-            $('#lnkShowFormGeneration').hide();
+            $('#lnkShowUseTask').hide();
             $('#lnkShowConditionManagement').hide();
             $('#lnkShowEventManagement').hide();
             $('#lnkShowServiceTaskManagement').hide();
@@ -103,7 +107,7 @@ class DesignProcess extends React.Component {
 
                     if (dataElementId.indexOf("Task_") != -1 || dataElementId.startsWith("Activity_")) {
                         if (dAttr.startsWith(userTaskPathIcon)) {
-                            $('#lnkShowFormGeneration').show();
+                            $('#lnkShowUseTask').show();
                             taskId = dataElementId;
                             return;
                         }
@@ -284,7 +288,7 @@ class DesignProcess extends React.Component {
                                 </div>
                                 <div className="card-toolbar card-icons card-icons-modal">
 
-                                    <button type="button" className="btn btn-success font-weight-bolder" id="lnkShowFormGeneration" onClick={() => { this.openTaskManagement(true); }} style={{ display: "none" }}>
+                                    <button type="button" className="btn btn-success font-weight-bolder" id="lnkShowUseTask" onClick={() => { this.openTaskManagement(true); }} style={{ display: "none" }}>
                                         {Lang.DesignProcess.activitySetting}
                                     </button>
                                     <button type="button" className="btn btn-success font-weight-bolder" id="lnkShowConditionManagement" onClick={() => { this.openConditionManagement(true); }} style={{ display: "none" }}>
@@ -331,7 +335,7 @@ class DesignProcess extends React.Component {
                                     </a>
                                 </div>
                             </div>
-                            <div className="card-body">
+                            <div className="card-body pt-0">
                                 <div className="row">
                                     <div className="col-sm-12">
                                         <div id="canvas" style={{ border: '1px solid', height: '600px' }}></div>

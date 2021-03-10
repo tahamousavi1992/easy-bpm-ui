@@ -88,3 +88,8 @@ input[data-isvariablecombotree] {
 .CodeMirror {
     border: 2px inset #dee;
 }
+/*edit icon in process designer*/
+.entry.fa.fa-edit{
+    position: absolute;
+    padding-top: 2px;
+}

@@ -108,7 +108,7 @@ class SubTypeThrowMessage extends React.Component {
 
     //Email region
     openVariableContent(targetId) {
-        window['lastInput'] = targetId; 
+        window['lastInput'] = targetId;
         document.getElementById('txtVariableContent').value = document.getElementById(targetId).value;
         window.openModal('divVariableContent', true);
     }
@@ -121,20 +121,22 @@ class SubTypeThrowMessage extends React.Component {
     toTypeChange() {
         debugger;
         let target = $('input[name="SubTypeMessageEventModel.Email.ToType"]:checked')[0];
-        document.getElementById('divContainertoVariable').style.display = "none";
-        document.getElementById('ToSystemic').style.display = "none";
-        document.getElementById('ToStatic').style.display = "none";
-        //SubTypeEmailEventModel.e_ToType.Variable
-        if (target.value == '2') {
-            document.getElementById('divContainertoVariable').style.display = "";
-        }
-        //SubTypeEmailEventModel.e_ToType.Static
-        if (target.value == '1') {
-            document.getElementById('ToStatic').style.display = "";
-        }
-        //SubTypeEmailEventModel.e_ToType.Systemic
-        if (target.value == '3') {
-            document.getElementById('ToSystemic').style.display = "";
+        if (document.getElementById('divContainertoVariable') != null) {
+            document.getElementById('divContainertoVariable').style.display = "none";
+            document.getElementById('ToSystemic').style.display = "none";
+            document.getElementById('ToStatic').style.display = "none";
+            //SubTypeEmailEventModel.e_ToType.Variable
+            if (target.value == '2') {
+                document.getElementById('divContainertoVariable').style.display = "";
+            }
+            //SubTypeEmailEventModel.e_ToType.Static
+            if (target.value == '1') {
+                document.getElementById('ToStatic').style.display = "";
+            }
+            //SubTypeEmailEventModel.e_ToType.Systemic
+            if (target.value == '3') {
+                document.getElementById('ToSystemic').style.display = "";
+            }
         }
     }
 
@@ -181,11 +183,11 @@ class SubTypeThrowMessage extends React.Component {
                     this.state.Model &&
                     <React.Fragment>
                         {
-                            //sysEvent.e_TypeLU.IntermediateThrow
-                            this.state.Model.TypeLU == 3 &&
+                            //sysEvent.e_TypeLU.IntermediateThrow and EndEvent
+                            (this.state.Model.TypeLU === 3 || this.state.Model.TypeLU === 2) &&
                             <div className="form-group row">
                                 <div className="col-lg-6">
-                                    <label>{Lang.SubTypeThrowMessage.type }</label>
+                                    <label>{Lang.SubTypeThrowMessage.type}</label>
                                     <div className="input-group">
                                         <Select name="ddlSubTypeMessageEventModelType" id="ddlSubTypeMessageEventModelType" defaultValue={this.state.Model.SubTypeMessageEventModel.Type || ''} handelChange={this.changeTypeOfMessage}
                                             listItem={this.state.SubTypeMessageEventModelTypes} optionKey="Key" optionLabel="Value" />
@@ -235,7 +237,7 @@ class SubTypeThrowMessage extends React.Component {
                                 <div className="table-information table-responsive">
                                     <table id="tblCloneMessageParams" style={{ display: "none" }}>
                                         <tbody>
-                                            <tr> 
+                                            <tr>
                                                 <td>
                                                     <input id="txtName" name="MessageParams.Name" readOnly={true} type="text" className="form-control text-left" />
                                                 </td>
@@ -272,8 +274,8 @@ class SubTypeThrowMessage extends React.Component {
                             </div>
                         </div>
                         {
-                            //sysEvent.e_TypeLU.IntermediateThrow
-                            this.state.Model.TypeLU == 3 &&
+                            //sysEvent.e_TypeLU.IntermediateThrow and EndEvent
+                            (this.state.Model.TypeLU === 3 || this.state.Model.TypeLU === 2) &&
                             <React.Fragment>
                                 <div className="form" id="divEmailMessage" style={{ display: "none" }}>
                                     <input defaultValue={this.state.Model.ID} type="hidden" id="ID" name="ID" />
@@ -377,7 +379,7 @@ class SubTypeThrowMessage extends React.Component {
                                             </div>
                                             <div className="modal-footer">
                                                 <button id="btnSaveMessage" onClick={this.callBackVariableContent} type="submit" className="btn btn-primary font-weight-bold">
-                                                    {Lang.Shared.apply }
+                                                    {Lang.Shared.apply}
                                                 </button>
                                                 <button type="button" className="btn btn-light-primary font-weight-bold" data-dismiss="modal" >
                                                     {Lang.Shared.cancel}

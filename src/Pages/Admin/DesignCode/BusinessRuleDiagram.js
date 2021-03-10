@@ -147,8 +147,8 @@ class BusinessRuleDiagram extends React.Component {
     render() {
         return (
             <div className="form mt-3">
-                <div class="alert alert-info alert-dismissible fade show">
-                    <strong>Tip: </strong> {Lang.DesignCodeForm.DiagramHelp} <button type="button" class="close" data-dismiss="alert">×</button>
+                <div className="alert alert-info alert-dismissible fade show">
+                    <strong>Tip: </strong> {Lang.DesignCodeForm.DiagramHelp} <button type="button" className="close" data-dismiss="alert">×</button>
                 </div>
                 <div className="row" id="convasContainer" style={{ height: "400px" }}>
                     <div id="gfx_holder2">
