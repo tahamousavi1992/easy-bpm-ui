@@ -4955,12 +4955,9 @@ span.svg-icon i:before {
     border-color: transparent;
 }
 
-.btn.btn-icon:hover i:before, .btn.btn-icon:focus i:before { /* color: #c3e1ff; */ /* opacity: 1; */
-}
-
 .btn.btn-icon:hover i:after, .btn.btn-icon:focus i:after {
     color: #288df5;
-    opacity: 1;
+    opacity: .8;
 }
 
 .btn.btn-icon:hover i, .btn.btn-icon:focus i {

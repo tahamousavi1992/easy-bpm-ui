@@ -32,13 +32,21 @@ class UserList extends React.Component {
         UtilityService.showMessage(result.ResultType, result.Message);
         this.doSearch();
     }
+    
     handelChange = (event) => { this.setState(UtilityService.handelChange(event)); }
+
     async openAddEditForm(id) {
         await this.setState({ AddEditId: id });
         //to reload modal form i had two hide&show component to reload that
         await this.setState({ OpenAddEdit: false });
         await this.setState({ OpenAddEdit: true });
         window.openModal('divAddEdit', true);
+    }
+
+    async syncDnnUser() {
+        let result = await new UserService().syncUserFromDnn();
+        UtilityService.showMessage(result.ResultType, result.Message);
+        this.doSearch();
     }
 
     render() {
@@ -55,6 +63,9 @@ class UserList extends React.Component {
                                         </h3>
                                     </div>
                                     <div className="card-toolbar">
+                                        <button type="button" className="btn btn-danger font-weight-bolder mr-2" id="btnsyncDnnUser" onClick={() => this.syncDnnUser()}>
+                                            {Lang.UserList.syncDnnUser}
+                                        </button>
                                         <button type="button" className="btn btn-primary font-weight-bolder" id="btnaddnewDbConnection" onClick={() => this.openAddEditForm(null)}>
                                             {Lang.UserList.new}
                                         </button>
@@ -78,7 +89,7 @@ class UserList extends React.Component {
                                                 </div>
                                             </div>
                                             <div className="col-lg-3 col-xl-4 mt-5 mt-lg-0">
-                                                <button  className="btn btn-light-primary px-6 font-weight-bold" data-toggle="collapse" data-target="#demo">
+                                                <button className="btn btn-light-primary px-6 font-weight-bold" data-toggle="collapse" data-target="#demo">
                                                     {Lang.Shared.AdvSearch}
                                                 </button>
                                             </div>

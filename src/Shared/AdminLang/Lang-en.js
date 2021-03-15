@@ -642,6 +642,7 @@ By double-clicking on any shape(action), you can specify the activity associated
     UserList: {
         caption: 'Users',
         new: 'New',
+        syncDnnUser: 'Add Users From Dnn',
         advName: 'Name',
         advRoleCode: 'Role',
         name: 'Name',

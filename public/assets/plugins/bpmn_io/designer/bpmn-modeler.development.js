@@ -34230,15 +34230,15 @@ function load_process_designer() {
 					type: 'bpmn:UserTask'
 				}
 			},
-			{
-				label: window.BpmnIoLang.ManualTask,
-				actionName: 'replace-with-manual-task',
-				className: 'bpmn-icon-manual',
-				target: {
-					type: 'bpmn:ManualTask'
-				}
-			},
 			//start taha Changed
+			// {
+			// 	label: window.BpmnIoLang.ManualTask,
+			// 	actionName: 'replace-with-manual-task',
+			// 	className: 'bpmn-icon-manual',
+			// 	target: {
+			// 		type: 'bpmn:ManualTask'
+			// 	}
+			// },
 			//{
 			//	label: window.BpmnIoLang.BusinessRuleTask,
 			//	actionName: 'replace-with-rule-task',

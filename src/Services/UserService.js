@@ -16,6 +16,9 @@ class UserService {
     async delete(id) {
         return await new UtilityService().deleteData(new BpmsConfig().AdminUrl + 'BpmsUser/Delete', { ID: id } );
     }
+    async syncUserFromDnn() {
+        return await new UtilityService().postData(new BpmsConfig().AdminUrl + 'BpmsUser/PostSyncUserFromDnn' );
+    }
 }
 
 export default UserService;

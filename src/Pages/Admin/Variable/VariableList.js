@@ -16,6 +16,9 @@ class VariableList extends React.Component {
     async componentDidMount() {
         await this.setState({ ApplicationPageId: this.props.applicationPageId, ProcessId: this.props.processId })
         await this.doSearch();
+        //load validation
+        window.initialFunctions();
+        window.bpmsInitialValidation('');
     }
     async doSearch() {
         let data = await new VariableService().getList(this.state.ApplicationPageId, this.state.ProcessId);
