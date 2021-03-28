@@ -106,7 +106,7 @@ class AddEditUser extends React.Component {
                                                 <div className="col-lg-6">
                                                     <label>{Lang.AddEditUser.mobile}</label>
                                                     <div className="input-group">
-                                                        <input onChange={this.handelChange} value={this.state.Mobile || ''} name='Mobile' className="form-control" autoComplete="off" />
+                                                        <input type="tel" onChange={this.handelChange} value={this.state.Mobile || ''} name='Mobile' className="form-control" autoComplete="off" />
                                                     </div>
                                                     <span htmlFor="Mobile" className="help-block error"></span>
                                                 </div>

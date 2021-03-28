@@ -90,7 +90,7 @@ export default function UserTaskContent(props) {
     }
 
     async function openPopUpForm(formId, params, callBackFunc, width, height) {
-        let url = props.GetPopUpUrl + (props.GetPopUpUrl.indexOf('?') > 0 ? "&" : "?") + 'formID=' + formId + '&' + params.replaceAll(',', '&');
+        let url = props.GetPopUpUrl + (props.GetPopUpUrl.indexOf('?') > 0 ? "&" : "?") + 'formID=' + formId + (params != '' ? ('&' + params.replaceAll(',', '&')) : '');
         setModel({ OpenPopUp: false });
         setModel({ OpenPopUp: true, OpenPopUpUrl: url, FormId: formId, CallBackFunc: callBackFunc, Width: width, Height: height });
     }
