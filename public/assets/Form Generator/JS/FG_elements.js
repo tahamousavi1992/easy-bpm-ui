@@ -194,7 +194,7 @@ function generateColumnElement(fgElementContainer, fgElementPlaceholder, type, e
 function generateButtonElement(fgElementContainer, fgElementPlaceholder, type, elementId) {
 
     var newButtonAtrr = new elementAttributes(htmlElementType.button, "align-btn-end btn btn-success", elementId, lang.FG.newButton);
-    newButtonAtrr.htmlSubType = FgCommon.getEnumKey(buttonTypeEnum, buttonTypeEnum.button);
+    newButtonAtrr.htmlSubType = FgCommon.getEnumKey(buttonTypeEnum, buttonTypeEnum.submit);
     newButtonAtrr.fg_ElementType = FgCommon.getHFG_ElementTypeEnumKey(FG_ElementTypeEnum.BUTTON);
 
     // Create new button

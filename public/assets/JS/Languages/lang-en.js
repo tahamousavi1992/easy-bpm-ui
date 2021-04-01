@@ -47,6 +47,7 @@
          label: 'Label',
          value: 'Value',
          type: 'Type',
+         buttonTypeLabel:'Type <i class="fa fa-exclamation-circle" data-toggle="tooltip" title="" data-original-title="Submit: saves all bound inputs into variable and executes all user defined actions  &nbsp; &nbsp; &nbsp; Button: only executes all user defined actions &nbsp; &nbsp; &nbsp;Reset: resets form inputs"></i>',
          accessType: 'Access',
          helpText: 'Help Text',
          idName: 'ID',

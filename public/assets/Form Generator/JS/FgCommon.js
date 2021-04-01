@@ -382,8 +382,11 @@ class FgCommon {
         var dropDownListId = idElementEditForm.ddlElementSubTypes;
         var elementAttribute;
         let subTypeElement = '';
-        if (element.prop("tagName").toLowerCase() === FgCommon.getEnumKey(htmlElementType, htmlElementType.button))
+        let typeLabel = lang.FG.type;
+        if (element.prop("tagName").toLowerCase() === FgCommon.getEnumKey(htmlElementType, htmlElementType.button)) {
             elementAttribute = FgCommon.createSubTypeHtmlElement(dropDownListId, Object.keys(buttonTypeEnum));
+            typeLabel = lang.FG.buttonTypeLabel;
+        }
         else if (element.prop("tagName").toLowerCase() === FgCommon.getEnumKey(htmlElementType, htmlElementType.input)) {
             elementAttribute = FgCommon.createSubTypeHtmlElementByEntries(dropDownListId, Object.entries(textBoxTypeEnum));
             subTypeElement = element.attr("data-type");
@@ -396,7 +399,7 @@ class FgCommon {
             subTypeElement = element.attr("type");
         // Set sub type
         elementAttribute.val(subTypeElement);
-        var formGroup = FgCommon.createDefaultColForElementAttribute_EditPopUp(elementAttribute, lang.FG.type, "fa fa-cog");
+        var formGroup = FgCommon.createDefaultColForElementAttribute_EditPopUp(elementAttribute, typeLabel, "fa fa-cog");
         return formGroup;
     }
 
@@ -1027,7 +1030,7 @@ class FgCommon {
             labelElement.html(FgCommon.jq_getElementById(idElementEditForm.label).val());
             return
         }
-    } 
+    }
 
     static updateBindingAttribute_EditPopUp(element) {
         var fillElement = FgCommon.jq_getElementById(idElementEditForm.bindingFillElement);
@@ -1057,20 +1060,25 @@ class FgCommon {
 
     // Update help text of element in edit popup
     static updateHelpTextElement_EditPopUp(element) {
-        var labelElement = FgCommon.getDefaultLabelElement(element);
-        var helpTextElement = FgCommon.jq_getElementById(idElementEditForm.helpText);
+        let labelElement = FgCommon.getDefaultLabelElement(element);
+        let helpTextElement = FgCommon.jq_getElementById(idElementEditForm.helpText);
         if (helpTextElement.val()) {
-            var toolTipElement = element.closest(".fg-el-placeholder").find('.fg_TooltipElement');
+            let toolTipElement = element.closest(".fg-el-placeholder").find('.fg_TooltipElement');
             if (toolTipElement.length > 0)
                 toolTipElement.attr('data-original-title', helpTextElement.val());
             else {
-                var toolTipAtrr = new elementAttributes(htmlElementType.i, 'fa fa-exclamation-circle fg_TooltipElement');
-                var toolTip = FgCommon.createNewChild(toolTipAtrr);
+                let toolTipAtrr = new elementAttributes(htmlElementType.i, 'fa fa-exclamation-circle fg_TooltipElement');
+                let toolTip = FgCommon.createNewChild(toolTipAtrr);
                 toolTip.attr("data-toggle", "tooltip");
                 toolTip.attr('data-original-title', helpTextElement.val());
                 toolTip.insertAfter(labelElement);
                 toolTip.tooltip();
             }
+        }
+        else {
+            let toolTipElement = element.closest(".fg-el-placeholder").find('.fg_TooltipElement');
+            if (toolTipElement.length > 0)
+                toolTipElement.remove();
         }
     }
 
@@ -1798,8 +1806,8 @@ export var inputTypeEnum = {
 };
 
 export var buttonTypeEnum = {
-    button: "button",
     submit: "submit",
+    button: "button",
     reset: "reset",
 };
 
