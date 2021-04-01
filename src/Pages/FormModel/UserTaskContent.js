@@ -7,6 +7,7 @@ import BpmsConfig from '../../Shared/BpmsConfig'
 const $ = window.$;
 export default function UserTaskContent(props) {
     let [model, setModel] = useState({});
+    let [htmlSubmitMessage, setHtmlSubmitMessage] = useState(null);
     const history = useHistory();
     useEffect(() => {
         //dynamic script ,defined in forms ,whill be added to page.
@@ -62,17 +63,23 @@ export default function UserTaskContent(props) {
                 else
                     window.location.href = result.RedirectUrl;
             } else {
-                if (result.ReloadForm != null && result.ReloadForm != "") {
+                if (result.ReloadForm === true) {
                     //result.EndAppPageID is only used in formLoader
                     props.updateForm(result.StepID, result.EndAppPageID);
                 }
                 else {
-                    if (result.IsSubmit == true) {
+                    if (result.IsSubmit === true) {
                         if (target.closest('.modal.show') != null) {
                             window.FormControl.closeModal();
                             let callBackFuncName = getContainerFormId(target) + 'callBackModal';
                             if (window[callBackFuncName] != null)
                                 window[callBackFuncName]();
+                        }
+                        else {
+                            //it is true when in single action module admin set a html message after submitting form.
+                            if (result.SubmittedHtmlMessage != null && result.SubmittedHtmlMessage !== '') {
+                                setSubmitMessage(result.SubmittedHtmlMessage);
+                            }
                         }
                     }
                     if (result.ListDownloadModel != null && result.ListDownloadModel.length > 0) {
@@ -103,6 +110,10 @@ export default function UserTaskContent(props) {
         return container.getAttribute('data-formId');
     }
 
+    function setSubmitMessage(strHtmlMessage) {
+        setHtmlSubmitMessage(strHtmlMessage);
+    }
+
     window[props.FormModel.DynamicFormID + "openPopUpForm"] = openPopUpForm;
     window[props.FormModel.DynamicFormID + "PageParams"] = props.PageParams;
     window[props.FormModel.DynamicFormID + "GetListElementUrl"] = props.GetListElementUrl;
@@ -126,49 +137,58 @@ export default function UserTaskContent(props) {
                 {props.FormModel.ContentHtml.Helper.StyleSheet}
             </style>
             <div id="divBpmsContainer" data-form-container="true" data-formid={props.FormModel.DynamicFormID}>
-                <div className="form mt-2">
-                    <input name="StepID" type="hidden" defaultValue={props.FormModel.StepID} />
-                    <ContentHtml globalProps={{
-                        DownloadFileUrl: props.DownloadFileUrl,
-                        PostForm: postForm,
-                        AddGoPreviousStep: addGoPreviousStep,
-                        AddGoNextStep: addGoNextStep
-                    }} {...props.FormModel.ContentHtml}></ContentHtml>
-                    {
-                        (props.FormModel.IsMultiStep && !props.FormModel.IsFormReadOnly) &&
-                        <div className="form-group">
-                            <div className="col-sm-12 text-left">
-                                {
-                                    !props.FormModel.IsFirstStep &&
-                                    <button id="btnPreviousStep" type="submit" className="btn btn-danger" onClick={(e) => { addGoPreviousStep(e.target) }}>
-                                        Previous Step
-                                    </button>
-                                }
-                                {
-                                    !props.FormModel.HasSubmitButton &&
-                                    <button id="btnSaveData" type="submit" className="btn btn-success" data-val-group="nextAction" onClick={(e) => { props.FormModel.IsLasStep ? postForm(e.target) : addGoNextStep(e.target) }}>
-                                        {(props.FormModel.IsLasStep ? "Save" : "Save And Next")}
-                                    </button>
-                                }
-                            </div>
-                        </div>
-                    }
+                {
+                    (htmlSubmitMessage != null || htmlSubmitMessage !== '') &&
+                    <div className="mt-2" dangerouslySetInnerHTML={{ __html: htmlSubmitMessage }}>
 
-                    {
-                        (!props.FormModel.HasSubmitButton && props.ProcessID && !props.FormModel.IsFormReadOnly) &&
-                        <div className="form-group">
-                            <div className="col-sm-12 text-right">
-                                <button id="btnSaveData" type="submit" data-val-group="nextAction" onClick={(e) => { postForm(e.target); }} className="btn btn-success">
-                                    Save
+                    </div>
+                }
+                {
+                    (htmlSubmitMessage == null || htmlSubmitMessage == '') &&
+                    <div className="form mt-2">
+                        <input name="StepID" type="hidden" defaultValue={props.FormModel.StepID} />
+                        <ContentHtml globalProps={{
+                            DownloadFileUrl: props.DownloadFileUrl,
+                            PostForm: postForm,
+                            AddGoPreviousStep: addGoPreviousStep,
+                            AddGoNextStep: addGoNextStep
+                        }} {...props.FormModel.ContentHtml}></ContentHtml>
+                        {
+                            (props.FormModel.IsMultiStep && !props.FormModel.IsFormReadOnly) &&
+                            <div className="form-group">
+                                <div className="col-sm-12 text-left">
+                                    {
+                                        !props.FormModel.IsFirstStep &&
+                                        <button id="btnPreviousStep" type="submit" className="btn btn-danger" onClick={(e) => { addGoPreviousStep(e.target) }}>
+                                            Previous Step
+                                    </button>
+                                    }
+                                    {
+                                        !props.FormModel.HasSubmitButton &&
+                                        <button id="btnSaveData" type="submit" className="btn btn-success" data-val-group="nextAction" onClick={(e) => { props.FormModel.IsLasStep ? postForm(e.target) : addGoNextStep(e.target) }}>
+                                            {(props.FormModel.IsLasStep ? "Save" : "Save And Next")}
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                        {
+                            (!props.FormModel.HasSubmitButton && props.ProcessID && !props.FormModel.IsFormReadOnly) &&
+                            <div className="form-group">
+                                <div className="col-sm-12 text-right">
+                                    <button id="btnSaveData" type="submit" data-val-group="nextAction" onClick={(e) => { postForm(e.target); }} className="btn btn-success">
+                                        Save
                                 </button>
+                                </div>
                             </div>
-                        </div>
-                    }
+                        }
 
-                    {
-                        props.ScriptFiles
-                    }
-                </div>
+                        {
+                            props.ScriptFiles
+                        }
+                    </div>
+                }
             </div>
             <React.Fragment>
                 {

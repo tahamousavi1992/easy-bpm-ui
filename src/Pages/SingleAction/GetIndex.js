@@ -66,7 +66,7 @@ export default class GetIndex extends React.Component {
                             }
                             {
                                 !this.state.ShowCardBody &&
-                                <UserTaskContent updateForm={this.updateForm} {...this.state.Model}></UserTaskContent>
+                                <UserTaskContent updateForm={this.updateForm}  {...this.state.Model}></UserTaskContent>
                             }
                         </React.Fragment>
                     }

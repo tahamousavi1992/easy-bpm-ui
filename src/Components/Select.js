@@ -13,7 +13,7 @@ class Select extends React.Component {
                     {
                         this.props.listItem && this.props.listItem.map((item, index) => {
                             return <option key={index} value={item[this.props.optionKey]}
-                                className="text-center" >{item[this.props.optionLabel]}
+                                 >{item[this.props.optionLabel]}
                             </option>
                         })
 
@@ -26,7 +26,7 @@ class Select extends React.Component {
                     {
                         this.props.listItem && this.props.listItem.map((item, index) => {
                             return <option key={index} value={item[this.props.optionKey]}
-                                className="text-center" >{item[this.props.optionLabel]}
+                                >{item[this.props.optionLabel]}
                             </option>
                         })
                     }

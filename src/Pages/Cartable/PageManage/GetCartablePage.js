@@ -18,6 +18,7 @@ class GetCartablePage extends React.Component {
             this.updateForm(nextProps.match.params.applicationPageId);
         }
     }
+
     //applicationPageId is only for nextProps.match.params.applicationPageId
     async updateForm(applicationPageId) {
         applicationPageId = (applicationPageId != null ? applicationPageId : this.props.match.params.applicationPageId);
