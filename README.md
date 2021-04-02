@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+It is the Front-End of Easy-Bpm module which was made for DotNetNuke. Easy-BPM is a Low-Code/No-Code platform for making business process management systems and is a Form Builder to create custom forms like contact form, etc. You can download the released package from the following link. https://store.dnnsoftware.com/home/product-details/easy-bpm-v0002
+
 ## Available Scripts
 
 In the project directory, you can run:
