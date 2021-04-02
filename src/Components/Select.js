@@ -13,7 +13,7 @@ class Select extends React.Component {
                     {
                         this.props.listItem && this.props.listItem.map((item, index) => {
                             return <option key={index} value={item[this.props.optionKey]}
-                                 >{item[this.props.optionLabel]}
+                            >{item[this.props.optionLabel]}
                             </option>
                         })
 
@@ -26,7 +26,7 @@ class Select extends React.Component {
                     {
                         this.props.listItem && this.props.listItem.map((item, index) => {
                             return <option key={index} value={item[this.props.optionKey]}
-                                >{item[this.props.optionLabel]}
+                            >{item[this.props.optionLabel]}
                             </option>
                         })
                     }
@@ -61,6 +61,34 @@ class VariableControl extends React.Component {
         );
     }
 }
+
+class InnerVariableControl extends React.Component {
+    constructor() {
+        super();
+    }
+    async componentDidMount() {
+        document.querySelectorAll('.varListOpener a').forEach((item) => {
+            item.setAttribute('onclick', 'window.openVariableList(this); return false');
+        });
+    }
+    render() {
+        return (
+            <div className='input-group varListOpener'>
+                <textarea id={this.props.name} name={this.props.name} data-isinner={true} defaultValue={this.props.value} rows={this.props.rows}
+                    className={this.props.isRequired ? "form-control required-field" : "form-control"} type='text' autoComplete='off' />
+                <div className='input-group-append'>
+                    <span className='input-group-text'>
+                        <a href='#' style={{ text_decoration: "none" }}>
+                            <i className='fa fa-plus'></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        );
+    }
+}
+
+
 class RadioList extends React.Component {
     constructor() {
         super();
@@ -104,6 +132,7 @@ class RadioList extends React.Component {
         );
     }
 }
+
 class CheckBox extends React.Component {
     constructor() {
         super();
@@ -133,6 +162,6 @@ class CheckBox extends React.Component {
         );
     }
 }
-export { Select as default, VariableControl, RadioList, CheckBox }
+export { Select as default, VariableControl, RadioList, CheckBox, InnerVariableControl }
 
 

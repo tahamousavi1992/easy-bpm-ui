@@ -614,22 +614,28 @@ function getBusinessRuleName(value) {
     return trimEndChar(result, ',');
 }
 function selectVariable(varSelected) {
-    
+
     if (window.selectedTarget.getAttribute('onchange') != null) {
         window.selectedTarget.value = varSelected;
         window.selectedTarget.onchange();
     }
     else {
-       
-        try{
-             //for firing react onchange event, I add this piece of code to add value in different way 
-             //and call change event after that.
-            let nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
-            nativeInputValueSetter.call(window.selectedTarget, varSelected);
-            let ev2 = new Event('change', { bubbles: true });
-            window.selectedTarget.dispatchEvent(ev2);
+
+        try {
+            if (window.selectedTarget.getAttribute('data-isinner') === 'true') {
+                window.insertAtCaret(window.selectedTarget, "[" + varSelected + "]");
+            }
+            else {
+                //for firing react onchange event, I add this piece of code to add value in different way 
+                //and call change event after that.
+                let nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
+                nativeInputValueSetter.call(window.selectedTarget, varSelected);
+                let ev2 = new Event('change', { bubbles: true });
+                window.selectedTarget.dispatchEvent(ev2);
+            }
+
         }
-        catch{
+        catch {
             window.selectedTarget.value = varSelected;
         }
     }

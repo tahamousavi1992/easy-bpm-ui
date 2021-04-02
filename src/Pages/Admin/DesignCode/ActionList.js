@@ -6,6 +6,7 @@ import SetVariableForm from './SetVariableForm';
 import SetControlForm from './SetControlForm';
 import WebServiceForm from './WebServiceForm';
 import SqlFunctionForm from './SqlFunctionForm';
+import EmailForm from './EmailForm';
 import EntityForm from './EntityForm';
 import Lang from '../../../Shared/AdminLang/Lang';
 
@@ -22,6 +23,7 @@ class ActionList extends React.Component {
         this.addMethod = this.addMethod.bind(this);
         this.addLoadWebService = this.addLoadWebService.bind(this);
         this.addLoadSqlFunction = this.addLoadSqlFunction.bind(this);
+        this.addLoadEmail = this.addLoadEmail.bind(this);
         this.addLoadEntity = this.addLoadEntity.bind(this);
         this.setSaveFunction = this.setSaveFunction.bind(this);
     }
@@ -64,6 +66,9 @@ class ActionList extends React.Component {
                 case 9:
                     actionTypeSelected = 'addLoadSqlFunction:9';
                     break;
+                case 10:
+                    actionTypeSelected = 'addLoadEmail:10';
+                    break;
             }
             document.getElementById('ddlActions').value = actionTypeSelected;
             this.ddlActionsChange({ target: document.getElementById('ddlActions') }, this.state.Base64Code);
@@ -77,7 +82,7 @@ class ActionList extends React.Component {
         if (actionType == 7) this.addLoadWebService(xmlB64Model);
         if (actionType == 8) this.addLoadEntity(xmlB64Model);
         if (actionType == 9) this.addLoadSqlFunction(xmlB64Model);
-        
+        if (actionType == 10) this.addLoadEmail(xmlB64Model);
     }
 
     async ddlActionsChange(event, xmlB64Model) {
@@ -104,6 +109,9 @@ class ActionList extends React.Component {
                 case 9:
                     this.addLoadSqlFunction(xmlB64Model);
                     break;
+                case 10:
+                    this.addLoadEmail(xmlB64Model);
+                    break;
             }
         }
     }
@@ -119,7 +127,7 @@ class ActionList extends React.Component {
         };
 
         //to reload modal form i had two hide&show component to reload that
-        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, Data: data });
+        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, OpenEmailForm: false, Data: data });
         await this.setState({ OpenCallMethodForm: true });
     }
 
@@ -133,7 +141,7 @@ class ActionList extends React.Component {
         };
 
         //to reload modal form i had two hide&show component to reload that
-        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, Data: data });
+        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, OpenEmailForm: false, Data: data });
         await this.setState({ OpenSetVariableForm: true });
     }
 
@@ -147,7 +155,7 @@ class ActionList extends React.Component {
         };
 
         //to reload modal form i had two hide&show component to reload that
-        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, Data: data });
+        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, OpenEmailForm: false, Data: data });
         await this.setState({ OpenSetControlForm: true });
     }
 
@@ -161,7 +169,7 @@ class ActionList extends React.Component {
         };
 
         //to reload modal form i had two hide&show component to reload that
-        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, Data: data });
+        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, OpenEmailForm: false, Data: data });
         await this.setState({ OpenWebServiceForm: true });
     }
     //it will open Sql Function
@@ -174,10 +182,25 @@ class ActionList extends React.Component {
         };
 
         //to reload modal form i had two hide&show component to reload that
-        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, Data: data });
+        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, OpenEmailForm: false, Data: data });
         await this.setState({ OpenSqlFunctionForm: true });
     }
-    
+
+    //it will open Sql Function
+    async addLoadEmail(xmlB64Model) {
+        if (xmlB64Model == null) xmlB64Model = '';
+        let data = {
+            DynamicFormId: this.state.DynamicFormId, XmlB64Model: xmlB64Model, ShapeId: this.state.ShapeId,
+            ParentShapeId: this.state.ParentShapeId, IsOutputYes: this.state.IsOutputYes, IsFirst: this.state.IsFirst,
+            ProcessId: this.props.ProcessId, ApplicationPageId: this.props.ApplicationPageId,
+        };
+
+        //to reload modal form i had two hide&show component to reload that
+        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, OpenEmailForm: false, Data: data });
+        await this.setState({ OpenEmailForm: true });
+    }
+
+
     //it will open _EntityForm
     async addLoadEntity(xmlB64Model, defGroupType) {
         if (xmlB64Model == null) xmlB64Model = '';
@@ -189,7 +212,7 @@ class ActionList extends React.Component {
         };
 
         //to reload modal form i had two hide&show component to reload that
-        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, Data: data });
+        await this.setState({ OpenCallMethodForm: false, OpenSetVariableForm: false, OpenSetControlForm: false, OpenWebServiceForm: false, OpenEntityForm: false, OpenSqlFunctionForm: false, OpenEmailForm: false, Data: data });
         await this.setState({ OpenEntityForm: true });
     }
 
@@ -214,8 +237,8 @@ class ActionList extends React.Component {
                 window.designCodeData.forEach((data) => {
                     if (data.id == this.state.Model.ID) {
                         data.id = id;
-                    } 
-                }); 
+                    }
+                });
             }
             window.draw2UpdateDiagramData([code], name, this.state.ShapeId);
             window.closeModal('divAddEditBusinessRule');
@@ -295,6 +318,9 @@ class ActionList extends React.Component {
                                                 <optgroup label="SqlFunction">
                                                     <option value="addLoadSqlFunction:9">{Lang.ActionList.manageSqlFunction}</option>
                                                 </optgroup>
+                                                <optgroup label="Email">
+                                                    <option value="addLoadEmail:10">{Lang.ActionList.manageEmail}</option>
+                                                </optgroup>
                                             </select>
                                         </div>
                                         <span htmlFor="Actions" className="help-block error"></span>
@@ -307,6 +333,7 @@ class ActionList extends React.Component {
                                     {this.state.OpenWebServiceForm && <WebServiceForm setSaveFunction={this.setSaveFunction} {...this.state.Data}></WebServiceForm>}
                                     {this.state.OpenEntityForm && <EntityForm setSaveFunction={this.setSaveFunction} {...this.state.Data}></EntityForm>}
                                     {this.state.OpenSqlFunctionForm && <SqlFunctionForm setSaveFunction={this.setSaveFunction} {...this.state.Data}></SqlFunctionForm>}
+                                    {this.state.OpenEmailForm && <EmailForm setSaveFunction={this.setSaveFunction} {...this.state.Data}></EmailForm>}
                                 </div>
                             </div>
                         }

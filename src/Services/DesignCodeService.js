@@ -80,6 +80,10 @@ class DesignCodeService {
         return await new UtilityService().postData(new BpmsConfig().AdminUrl + 'BpmsDesignCode/PostLoadWebServiceForm', data);
     }
 
+    async postLoadEmailForm(data) {
+        return await new UtilityService().postData(new BpmsConfig().AdminUrl + 'BpmsDesignCode/PostLoadEmailForm', data);
+    }
+
     async postLoadEntityForm(data) {
         return await new UtilityService().postData(new BpmsConfig().AdminUrl + 'BpmsDesignCode/PostLoadEntityForm', data);
     }

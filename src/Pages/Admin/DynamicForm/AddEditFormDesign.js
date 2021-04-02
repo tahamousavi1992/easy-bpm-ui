@@ -365,7 +365,7 @@ class AddEditFormDesign extends React.Component {
     }
 
     async openSelectVariable(target) {
-        window.selectedTarget = (target.tagName == "A" || target.tagName == "I") ? target.closest('.input-group').querySelector('input') : target;
+        window.selectedTarget = (target.tagName == "A" || target.tagName == "I") ? target.closest('.input-group').querySelector('input,textarea') : target;
         await this.setState({
             SelectedVariable: (window.selectedTarget.value == null ? '' : window.selectedTarget.value),
             IsListVariable: window.selectedTarget.getAttribute('data-isListVariable') == 'true',

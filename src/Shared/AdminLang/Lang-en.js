@@ -148,6 +148,7 @@
         setControl: 'Set Control',
         manageWebService: 'Manage WebService',
         manageSqlFunction: 'Sql Query',
+        manageEmail: 'Send Email',
         createEntity: 'Create Entity',
         updateEntity: 'Update Entity',
         deleteEntity: 'Delete Entity',
@@ -258,6 +259,15 @@ By double-clicking on any shape(action), you can specify the activity associated
         addParameter: 'Add Parameter',
         addHeader: 'Add Header',
         tbl_th_Header: 'Header',
+    },
+
+    EmailForm: {
+        from: "From",
+        caption: 'Email',
+        name: 'Name',
+        to: 'To',
+        subject: 'Subject',
+        body: 'Body',
     },
 
     SqlFunctionForm: {
