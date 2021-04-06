@@ -15,12 +15,14 @@ class WordCaptchaElement {
 
     init() {
         //set image url of captcha
-        this.element.closest('.bpms-control-container').querySelector('img').src = `${window[this.formId + "GetCaptchaUrl"]}?key=${this.element.id}&formId=${this.formId}`;
+        let url = window[this.formId + "GetCaptchaUrl"];
+        this.element.closest('.bpms-control-container').querySelector('img').src = `${url}${url.includes("?") ? '&' : '?'}key=${this.element.id}&formId=${this.formId}`;
     }
 
     refresh() {
         //set image url of captcha
-        this.element.closest('.bpms-control-container').querySelector('img').src = `${window[this.formId + "GetCaptchaUrl"]}?key=${this.element.id}&formId=${this.formId}&a=${Math.floor(Math.random() * 100)}`;
+        let url = window[this.formId + "GetCaptchaUrl"];
+        this.element.closest('.bpms-control-container').querySelector('img').src = `${url}${url.includes("?") ? '&' : '?'}key=${this.element.id}&formId=${this.formId}&a=${Math.floor(Math.random() * 100)}`;
     }
 
     get visibility() {
