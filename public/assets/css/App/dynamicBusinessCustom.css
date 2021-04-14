@@ -93,3 +93,7 @@ input[data-isvariablecombotree] {
     position: absolute;
     padding-top: 2px;
 }
+/*when loading skin css, because of css loading order, bootstrap.css doesn't work*/
+textarea.form-control {
+    height: auto;
+}
