@@ -32,6 +32,8 @@ class ExpressionCodeForm extends React.Component {
         setTimeout(() => {
             window.expressionCodeEditorInti('txtExpressionCode', window.expressionCodeEditorIntiData)
         }, 1000);
+        //init category
+        this.category_changed(document.getElementById('ddlCategories'));
     }
 
     handelChange = (event) => { this.setState(UtilityService.handelChange(event)); }
@@ -62,11 +64,15 @@ class ExpressionCodeForm extends React.Component {
     }
 
     expressionDdlCategories_Change(event) {
+        this.category_changed(event.target);
+    }
+
+    category_changed = (target) => {
         document.querySelectorAll('.methods select[multiple]').forEach(function (item) {
             item.style.display = 'none';
         });
-        document.getElementById(event.target.value).closest('.methods').querySelector('label').innerHTML = event.target.selectedOptions[0].text;
-        document.getElementById(event.target.value).style.display = '';
+        document.getElementById(target.value).closest('.methods').querySelector('label').innerHTML = target.selectedOptions[0].text;
+        document.getElementById(target.value).style.display = '';
     }
 
     expressionCodeEditorInti(inputid, code) {
@@ -257,10 +263,10 @@ class ExpressionCodeForm extends React.Component {
                         <button id="btnSaveInfo" onClick={this.submitForm} data-val-group="saveExpression"
                             type="button" className="btn btn-primary font-weight-bold">
                             {Lang.Shared.apply}
-                       </button>
+                        </button>
                         <button type="button" className="btn btn-light-primary font-weight-bold" id="lnkExpressionCancel" data-dismiss="modal" >
                             {Lang.Shared.cancel}
-                       </button>
+                        </button>
                     </div>
                 </div>
             </div >

@@ -11,22 +11,43 @@ export default function UserTaskContent(props) {
     const history = useHistory();
     useEffect(() => {
         //dynamic script ,defined in forms ,whill be added to page.
+        let scriptContainer = document.createElement('div');
+        if (props.ScriptFiles != null && props.ScriptFiles.length > 0) {
+            props.ScriptFiles.forEach(jsLink => {
+                let script = document.createElement('script');
+                script.src = jsLink;
+                scriptContainer.appendChild(script);
+            });
+        }
+        document.body.appendChild(scriptContainer);
+
         let script = document.createElement('script');
         script.innerHTML = props.FormModel.ContentHtml.Helper.Script;
         document.body.appendChild(script);
 
-        setTimeout(() => {
+        loadBpmsEngine();
+
+        return () => {
+            document.body.removeChild(script);
+            document.body.removeChild(scriptContainer);
+        }
+    }, []);
+
+    function loadBpmsEngine() {
+        if (window.FormControl != null) {
             try {
                 window.FormControl.initBpmsEngine();
             }
             catch (ex) {
                 console.log("Caught exception: " + ex);
             }
-        }, 700);
-        return () => {
-            document.body.removeChild(script);
         }
-    }, []);
+        else {
+            setTimeout(() => {
+                loadBpmsEngine();
+            }, 300);
+        }
+    }
 
     async function addGoNextStep(target) {
         await postForm(target, true);
@@ -182,10 +203,6 @@ export default function UserTaskContent(props) {
                                 </button>
                                 </div>
                             </div>
-                        }
-
-                        {
-                            props.ScriptFiles
                         }
                     </div>
                 }

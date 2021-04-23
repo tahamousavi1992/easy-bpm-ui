@@ -27657,8 +27657,21 @@ __webpack_require__(/*! !./node_modules/script-loader/addScript.js */ "./node_mo
                 // x and y must not be changed (after re-show on command click)
                 offset = opt.$menu.position();
             } else {
-                // x and y are given (by mouse event)
+
+				//taha edit start.
+				// x and y are given (by mouse event)
+                //offset = { top: y, left: x };
+				
+				//If user is host then personabar is visible therefore menu position must be minus with 80.
+				if(document.body.classList.contains('personabar-visible')){
+				// x and y are given (by mouse event)
+                offset = { top: y, left: x-80 };
+				}
+				else{
+				// x and y are given (by mouse event)
                 offset = { top: y, left: x };
+				}
+				//taha edit ended.
             }
 
             // correct offset if viewport demands it

@@ -164,7 +164,7 @@ class EntityDefList extends React.Component {
                                                                             <span className="svg-icon svg-icon-md"><i className="fad fa-times"></i></span>
                                                                         </a>
                                                                     }
-                                                                    <a onClick={() => this.openExecuteQuery(item.ID)} className="btn btn-sm btn-clean btn-icon">
+                                                                    <a onClick={() => this.openExecuteQuery(item.ID)} className="btn btn-sm btn-clean btn-icon" title={Lang.EntityDefList.tbl_th_Query}>
                                                                         <span className="svg-icon svg-icon-md"><i className="fad fa-database"></i></span>
                                                                     </a>
                                                                 </td>

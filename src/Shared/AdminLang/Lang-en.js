@@ -26,7 +26,7 @@
         setting: 'Setting',
         apiAccessList: 'API Access',
         assemblyFileList: 'Components',
-        connectionList: 'Sql Connections',
+        connectionList: 'SQL Connections',
         departmentList: 'Organization',
         applicationPages: 'Application Pages',
         EmailAccountList: 'Email Accounts',
@@ -370,6 +370,7 @@ By double-clicking on any shape(action), you can specify the activity associated
         tbl_th_Name: 'Name',
         tbl_th_TableName: 'Table Name',
         tbl_th_Operation: 'Operation',
+        tbl_th_Query: 'Execute Query',
     },
     AddEditEntityDef: {
         caption: 'Add or Edit Entity',
