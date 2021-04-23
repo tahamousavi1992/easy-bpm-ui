@@ -1,6 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-It is the Front-End of Easy-Bpm module which was made for DotNetNuke. Easy-BPM is a Low-Code/No-Code platform for making business process management systems and is a Form Builder to create custom forms like contact form, etc. You can download the released package from the following link. https://store.dnnsoftware.com/home/product-details/easy-bpm-v0003
+this is Front-End of a Low/No Code platform, Easy-BPM, for a well-known .NET CMS called DNN which you can find it on DNN store. this platform is a business process management system which users can build a business flow/process like ticketing system, CRM, BMS and etc. In addition to the BPM features, it can be used to create forms and apps like Mendix, Kissflow. My main goal is to make a platform for developer to reduce the time of development of repetitive projects/tasks.
+
+You can download the released package from the following link. https://store.dnnsoftware.com/home/product-details/easy-bpm-v0003 and the back-end repository is here https://github.com/tahamousavi1992/dynamic-business
+
+###### License
+
+All title and copyrights in and to the SOFTWARE PRODUCT (including but not limited to any images, photographs, animations, video, audio, music, text, and "applets" incorporated into the SOFTWARE PRODUCT), the accompanying printed materials, and any copies of the SOFTWARE PRODUCT are owned by Easy-Bpm except for certain portions for which we has obtained redistribution rights from the title or copyright holder. You must treat the SOFTWARE PRODUCT like any other copyrighted material. You can download the source code as it is public repository but you have not the right for reproduction or redistribution the source code under any other name, product and license.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
