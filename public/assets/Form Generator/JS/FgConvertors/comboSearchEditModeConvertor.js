@@ -78,7 +78,7 @@ class FgComboSearchEditModeConvertor extends ElementEditModeConvertor {
     }
 
     //Fill setting pop up by ComboSearch attributes
-    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, scriptTab) {
+    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, coddingTab, scriptTab) {
 
         baseSettingTab
             .append(FgCommon.createClassNameDiv_EditPopUp(element)) // Class name // label of element

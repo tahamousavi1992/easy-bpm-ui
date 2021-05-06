@@ -225,7 +225,7 @@ body {
     /* border: 1px solid #DDDDDD; */
     /* border-radius: 4px 0 4px 0; */
     color: #d0d5d9;
-    content: "سطر";
+    content: "row";
     font-size: 14px;
     /* font-weight: bold; */
     left: 50%;
@@ -238,11 +238,11 @@ body {
 }
 
 [fg_element_type="ACCORDION"]:before {
-    content: "آکاردئون" !important;
+    content: "accordion" !important;
 }
 
 [fg_element_type="CARD"]:before {
-    content: "کارت : " attr(data-label) !important;
+    content: "card : " attr(data-label) !important;
 }
 
 .demo .row-fluid {
@@ -267,7 +267,7 @@ body {
 
 .edit .column:after {
     color: #f1f1f1;
-    content: "ستون";
+    content: "column";
     font-size: 12px;
     /* font-weight: bold; */
     left: 50%;
@@ -579,15 +579,7 @@ a.language-selected {
         }
 
         .toolbox-reset .label {
-            /* display: inline-block; */
-            /* padding: 2px 4px; */
             font-size: 12px;
-            /* font-weight: bold; */
-            /* line-height: 14px; */
-            /* color: #ffffff; */
-            /* vertical-align: baseline; */
-            /* white-space: nowrap; */
-            /* text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); */
             background-color: #999999;
         }
 
@@ -856,7 +848,7 @@ body:not(.rtl) .accordionElementContent .toolbarElement {
     line-height: 25px;
     background-color: #fff !important;
     opacity: 1;
-    padding: 5px;
+    padding: 0px 5px 0px 5px;
     margin: 0 !important;
     position: relative;
     color: #bbb7b7;
@@ -869,13 +861,8 @@ body:not(.rtl) .accordionElementContent .toolbarElement {
 
 .cardElementContent .toolbarElement {
     top: -9px !important;
-    right: 0 !important;
 }
 
-.rtl .rowElementContent .row-fluid .toolbarElement {
-    top: 0 !important;
-    right: 5px !important;
-}
 body:not(.rtl) .rowElementContent .row-fluid .toolbarElement {
     top: 0 !important;
     left: 5px !important;
@@ -884,7 +871,7 @@ body:not(.rtl) .rowElementContent .row-fluid .toolbarElement {
     display: inline-block; /* line-height: 25px; */
     background-color: #fff !important;
     opacity: 1;
-    padding: 5px;
+    padding: 0px 5px 0px 5px;
     margin: 0 !important;
     position: relative; /* top: 1px; */
     color: #949292; /* height: 16px; */
@@ -903,9 +890,7 @@ body:not(.rtl) .rowElementContent .row-fluid .toolbarElement {
 .fg-column:hover .fg-el-container:not(:hover) .toolbarElement {
     opacity: 1;
 }
-.rtl .rowElementContent > .toolbarElement {
-    right: 0;
-}
+
 body:not(.rtl) .rowElementContent > .toolbarElement {
     left: 0;
 }
@@ -941,15 +926,7 @@ body:not(.rtl) .rowElementContent > .toolbarElement {
     background-color: lightblue;
 }
 
-.whenDrag {
-    /* width:100% !important; */
-    /* zIndex: 1000; */
-}
-
-    .whenDrag input {
-        /* width:100% !important;	 */
-    }
-
+ 
 
 .intro-image {
     display: table;
@@ -1068,10 +1045,6 @@ body:not(.rtl) .rowElementContent > .toolbarElement {
         color: #ffffff;
     }
 
-
-.form-block .radio, .form-block .checkbox, .form-block .switch {
-    /* margin-right: 15px; */
-}
 
     .form-block .radio input[type="radio"], .form-block .checkbox input[type="checkbox"], .form-block .switch input[type="checkbox"] {
         margin-right: 5px;

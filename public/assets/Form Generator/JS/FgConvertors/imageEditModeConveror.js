@@ -66,7 +66,7 @@ class FgImageEditModeConvertor extends ElementEditModeConvertor {
     }
 
     // Fill setting pop up by FileUpload attributes
-    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, scriptTab) {
+    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, coddingTab, scriptTab) {
         var hideClassListName = Object.values(imageBootstrapTypeEnum);
         baseSettingTab
             .append(FgCommon.createClassNameDiv_EditPopUp(element, hideClassListName)) // Class name 

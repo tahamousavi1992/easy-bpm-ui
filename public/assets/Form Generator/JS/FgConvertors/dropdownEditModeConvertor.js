@@ -97,7 +97,7 @@ class FgDropdownEditModeConvertor extends ElementEditModeConvertor {
     }
 
     // Fill setting pop up by DropDownList attributes
-    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, scriptTab) {
+    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, coddingTab, scriptTab) {
 
         var tabpanel = $(modalBody).find('.editPopUp-tabpanel');
         FgCommon.generateSingleTab_EditPopUp(tabpanel, new BootstrapTab(lang.FG.optionManagmentTab, "#" + idElementEditForm.optionManagmentTab, idElementEditForm.optionManagmentTab, idElementEditForm.optionManagmentTab));

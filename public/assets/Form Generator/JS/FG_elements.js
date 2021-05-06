@@ -14,6 +14,7 @@ function addNewColumn(target) {
     var type1 = new FG_ElementType(FG_ElementTypeEnum.COLUMN, getCssClassColumn('4'));
     var el = new FG_Element(type1)
     $(target).closest('.fg-el-container').find('[fg_element_type="ROW"]').append(el.html);
+    setDropWidgetForToolbar();
 }
 
 function getRawElementContainer(type) {
@@ -582,7 +583,7 @@ function generateCkEditorElement(fgElementContainer, fgElementPlaceholder, type,
 
     newCkeditor.attr("id", elementId);
     newCkeditor.addClass("myCkeditor");
-     
+
     addRawDivInputGroup(fgElementPlaceholder, newCkeditor, lang.FG.newCkeditor, null);
     return fgElementContainer;
 }
@@ -727,24 +728,35 @@ function callSortableForColOfRow(col) {
 
 function callDraggableForElementNew(typeEnum) {
     // Get element class name by FG_ElementType
-    var className = generateClassNameElement(typeEnum);
+    let className = generateClassNameElement(typeEnum);
     if (className != 'undefined') {
-        var draggableElement = $("." + className);
-        draggableElement.draggable({
-            connectToSortable: '.fg-column',
-            containment: '#content',
-            cursor: 'move',
-            helper: helperMethod(typeEnum),
-            revert: false,
-            start: function (event, ui) {
-                $(ui.helper).addClass("whenDrag");
-            },
-
-        });
+        let draggableElement = document.getElementsByClassName(className)[0];
+        if (draggableElement != null) {
+            draggableElement.draggable = true;
+            draggableElement.ondragstart = function (ev) {
+                ev.dataTransfer.setData("elementType", typeEnum);
+            }
+        }
     }
     else {
         console.error('class name in callDraggableForElement is undefined.')
     }
+}
+
+//this is for dropping a widget whuch is draging from the top toolbar.
+function setDropWidgetForToolbar() {
+    document.querySelectorAll('.fg-column').forEach(function (item) {
+        item.ondragover = (ev) => { ev.preventDefault(); };
+        item.ondrop = (ev) => {
+            ev.preventDefault();
+            let elementType = ev.dataTransfer.getData("elementType");
+            ev.target.closest('.fg-column').appendChild(helperMethod(elementType)().get(0));
+ 
+            if (elementType == 'DATEPICKER')
+                window.initialDatePicker();
+            window.initCkeditor();
+        };
+    });
 }
 
 function helperMethod(typeEnum) {
@@ -1117,6 +1129,7 @@ class FormGeneratorMethod {
                                 callDraggableForElementNew(FG_ElementTypeEnum[key]);
             }
         }
+        setDropWidgetForToolbar();
     }
 
     static configEditToolbarButtons() {
@@ -1215,6 +1228,32 @@ class FormGeneratorMethod {
             cursor: "move",
             items: '.fg-column',
             connectToSortable: '.rowElementContent',
+        });
+    }
+
+    static initRowAccordion() {
+        $('.rowDashboard').click(function () {
+            let dropped = FormGeneratorMethod.addNewRow('4-4-4');
+            $('#content').append(dropped);
+            $(dropped).find('.rowElementContent').sortable({
+                cursor: "move",
+                items: '.fg-column',
+                connectToSortable: '.rowElementContent',
+            });
+            setDropWidgetForToolbar();
+        });
+
+
+        $('.accordionDashboard').click(function () {
+            let dropped = FormGeneratorMethod.addNewAccordion();
+            FormGeneratorMethod.addCardToAccordion(dropped);
+            $('#content').append(dropped);
+            $(dropped).find('.rowElementContent').sortable({
+                cursor: "move",
+                items: '.fg-column',
+                connectToSortable: '.rowElementContent',
+            });
+            setDropWidgetForToolbar();
         });
     }
 }

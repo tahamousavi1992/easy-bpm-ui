@@ -86,7 +86,7 @@ class FgDataGridEditModeConvertor extends ElementEditModeConvertor {
     }
 
     //Fill setting pop up by Data Grid attributes
-    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, scriptTab) {
+    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, coddingTab, scriptTab) {
         baseSettingTab
             .append(FgCommon.createClassNameDiv_EditPopUp(element)) // Class name // label of element
             .append(FgCommon.createLabelElementDiv_EditPopUp(type, element)); // Label

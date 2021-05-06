@@ -119,27 +119,9 @@ class AddEditFormDesign extends React.Component {
             });
 
         }
-        $('.rowDashboard').click(function () {
-            let dropped = window.FormGeneratorMethod.addNewRow('4-4-4');
-            $('#content').append(dropped);
-            $(dropped).find('.rowElementContent').sortable({
-                cursor: "move",
-                items: '.fg-column',
-                connectToSortable: '.rowElementContent',
-            });
-        });
-
-        $('.accordionDashboard').click(function () {
-            let dropped = window.FormGeneratorMethod.addNewAccordion();
-            window.FormGeneratorMethod.addCardToAccordion(dropped);
-            $('#content').append(dropped);
-            $(dropped).find('.rowElementContent').sortable({
-                cursor: "move",
-                items: '.fg-column',
-                connectToSortable: '.rowElementContent',
-            });
-        });
-
+        
+        window.FormGeneratorMethod.initRowAccordion();
+  
         setInterval(window.disableSubmit, 2000);
 
         // Loading taskFormHtml that is sent from designer for using in form generator
@@ -433,25 +415,25 @@ class AddEditFormDesign extends React.Component {
                                         </div>
                                     </div>
                                     <div className="card-toolbar card-icons">
-                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 rowDashboard" title="Row">
+                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 rowDashboard" data-toggle="tooltip" title="Row">
                                             <i className="fad fa-align-justify"></i>
                                         </a>
-                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 accordionDashboard" title="Accordion">
+                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 accordionDashboard" data-toggle="tooltip" title="Accordion">
                                             <i className="fad fa-align-justify"></i>
                                         </a>
-                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 buttonDashboard" title="Button">
+                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 buttonDashboard" data-toggle="tooltip" title="Button">
                                             <i className="fad fa-hand-point-up"></i>
                                         </a>
-                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 inputDashboard" title="Input">
+                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 inputDashboard" data-toggle="tooltip" title="Input">
                                             <i className="fad fa-font"></i>
                                         </a>
-                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 comboSearchDashboard" title="Combo Search">
+                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 comboSearchDashboard" data-toggle="tooltip" title="Combo Search">
                                             <i className="fad fa-list-ul"></i>
                                         </a>
-                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 dropDownListDashboard" title="Drop Down List" >
+                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 dropDownListDashboard" data-toggle="tooltip" title="Drop Down List" >
                                             <i className="fad fa-list-ul"></i>
                                         </a >
-                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 radioButtonListDashboard" title="Radio Button List" >
+                                        <a className="btn btn-sm btn-icon btn-light-primary ml-2 radioButtonListDashboard" data-toggle="tooltip" title="Radio Button List" >
                                             <i className="fad fa-circle-notch"></i>
                                         </a >
                                         <a className="btn btn-sm btn-icon btn-light-primary ml-2 checkBoxListDashboard" data-toggle="tooltip" title="Check Box List" >

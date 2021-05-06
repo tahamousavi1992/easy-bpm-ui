@@ -83,7 +83,7 @@ class FgDatepickerEditModeConvertor extends ElementEditModeConvertor {
     }
 
     // Fill setting pop up by Captcha attributes
-    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, scriptTab) {
+    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, coddingTab, scriptTab) {
 
         baseSettingTab.append(FgCommon.createLabelElementDiv_EditPopUp(type, element));
         baseSettingTab.append(FgCommon.createElementIdDiv_EditPopUp(element));

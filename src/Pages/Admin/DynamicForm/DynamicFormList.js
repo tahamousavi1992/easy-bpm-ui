@@ -163,7 +163,7 @@ class DynamicFormList extends React.Component {
                                                                     {
                                                                         item.ApplicationPageID &&
                                                                         <React.Fragment>
-                                                                            <Link to={BpmsConfig.currentPage() + `/AppPageFormDesign/${item.ApplicationPageID}`} className="btn btn-sm btn-clean btn-icon">
+                                                                            <Link to={BpmsConfig.currentPage() + `/AppPageFormDesign/${item.ApplicationPageID}`} className="btn btn-sm btn-clean btn-icon" title={Lang.Shared.edit}>
                                                                                 <span className="svg-icon svg-icon-md"><i className="fad fa-palette"></i></span>
                                                                             </Link>
                                                                         </React.Fragment>
