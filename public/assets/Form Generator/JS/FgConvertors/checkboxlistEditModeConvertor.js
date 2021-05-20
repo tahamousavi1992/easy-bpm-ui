@@ -100,7 +100,7 @@ class FgCheckboxlistEditModeConvertor extends ElementEditModeConvertor {
     }
 
     // Fill setting pop up by CheckboxList attributes
-    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, scriptTab) {
+    generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, coddingTab, scriptTab) {
 
         // create new tab for add edit options
         var tabpanel = $(modalBody).find('.editPopUp-tabpanel');
