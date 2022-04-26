@@ -431,7 +431,7 @@ By double-clicking on any shape(action), you can specify the activity associated
         intervalType: 'Interval Type',
         variable: 'Variable',
         minute: 'Minute',
-        dateTime: 'DateTime',
+        dateTime: 'Date Time',
         hour: 'Hour',
         daysofweek: 'Days of week',
         daysofmonths: 'Days of months',
@@ -447,7 +447,7 @@ By double-clicking on any shape(action), you can specify the activity associated
         tbl_th_Name: 'Name',
         tbl_th_IsMandatory: 'Required',
         tbl_th_MaxSize: 'Max Size(KB)',
-        tbl_th_ValidExtentions: 'Valid Extentions',
+        tbl_th_ValidExtensions: 'Valid Extensions',
         tbl_th_Operation: 'Operation',
     },
     AddEditFolder:
@@ -462,7 +462,7 @@ By double-clicking on any shape(action), you can specify the activity associated
         displayName: 'Display Name',
         name: 'Name',
         maxSize: 'Max Size (KB)',
-        validExtentions: 'Valid Extentions',
+        validExtensions: 'Valid Extensions',
         isMandatory: 'Required?',
     },
 

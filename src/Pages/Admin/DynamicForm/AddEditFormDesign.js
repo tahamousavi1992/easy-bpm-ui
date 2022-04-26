@@ -52,7 +52,7 @@ class AddEditFormDesign extends React.Component {
     }
 
     async componentDidMount() {
-        //load data 
+        //load data
         let data = await new DynamicFormService().getAddEditFormDesign(this.props.match.params.Id, this.props.match.params.ApplicationPageId);
         this.setPageCaption(data.Model);
         await this.setState({ ...data });
@@ -119,9 +119,9 @@ class AddEditFormDesign extends React.Component {
             });
 
         }
-        
+
         window.FormGeneratorMethod.initRowAccordion();
-  
+
         setInterval(window.disableSubmit, 2000);
 
         // Loading taskFormHtml that is sent from designer for using in form generator
@@ -243,7 +243,7 @@ class AddEditFormDesign extends React.Component {
         if (targetElement.id != 'txtCallBackScript' && targetElement.value == "" && (code == null || code == "")) {
             targetElement.value = document.getElementById('txtIdElement').value
                 + "_" + targetElement.id.split('_')[1];
-            code = `function ${targetElement.value}(){ 
+            code = `function ${targetElement.value}(){
 
         }`;
         }
@@ -329,9 +329,6 @@ class AddEditFormDesign extends React.Component {
     }
 
     configRemoveToolbarButtons() {
-        $('.fg-delete-element').on('click', function () {
-            console.log(this);
-        });
         $('#content').on('click', '.fg-delete-element', function () {
             $(this).closest('.fg-el-container').remove();
         });
@@ -377,35 +374,35 @@ class AddEditFormDesign extends React.Component {
                                                     <a className="dropdown-item mt-1" id="btnOpenEditInfo" onClick={() => {
                                                         this.sendFormToServer(window.FormGeneratorMethod.saveContent());
                                                         this.disableSubmit();
-                                                    }}> 
+                                                    }}>
                                                         <span className="nav-text">{Lang.AddEditFormDesign.saveForm}<i className="fa fa-save float-right mt-1"></i></span>
                                                     </a>
                                                 }
                                                 {
                                                     this.state.Model.ApplicationPageID &&
-                                                    <a className="dropdown-item mt-1" id="btnOpenEditInfo" onClick={this.openFormEditApplicationPage}> 
+                                                    <a className="dropdown-item mt-1" id="btnOpenEditInfo" onClick={this.openFormEditApplicationPage}>
                                                         <span className="nav-text">{Lang.AddEditFormDesign.openFormEditApplicationPage}<i className="fa fa-wpforms float-right mt-1"></i></span>
                                                     </a>
                                                 }
                                                 {
                                                     !this.state.Model.ApplicationPageID &&
-                                                    <a className="dropdown-item mt-1" id="btnOpenEditInfo" onClick={this.openAddDynamicForm}> 
+                                                    <a className="dropdown-item mt-1" id="btnOpenEditInfo" onClick={this.openAddDynamicForm}>
                                                         <span className="nav-text">{Lang.AddEditFormDesign.AddDynamicForm}<i className="fa fa-wpforms float-right mt-1"></i></span>
                                                     </a>
                                                 }
-                                                <a className="dropdown-item mt-1" id="btnOpenEditInfo" onClick={this.openVariableListPage}> 
+                                                <a className="dropdown-item mt-1" id="btnOpenEditInfo" onClick={this.openVariableListPage}>
                                                     <span className="nav-text">{Lang.AddEditFormDesign.openVariables}<i className="fa fa-wpforms float-right mt-1"></i></span>
                                                 </a>
-                                                <a className="dropdown-item mt-1" id="btnOpenOnLoadJavaScript" onClick={this.openFormOnloadJavaScriptCode}> 
+                                                <a className="dropdown-item mt-1" id="btnOpenOnLoadJavaScript" onClick={this.openFormOnloadJavaScriptCode}>
                                                     <span className="nav-text">{Lang.AddEditFormDesign.onLoadJavaScript}<i className="fa fa-code float-right mt-1"></i></span>
                                                 </a>
-                                                <a className="dropdown-item mt-1" id="btnOpenStyleSheet" onClick={this.openFormOnloadStyleSheet}> 
+                                                <a className="dropdown-item mt-1" id="btnOpenStyleSheet" onClick={this.openFormOnloadStyleSheet}>
                                                     <span className="nav-text">{Lang.AddEditFormDesign.openStyleSheet}<i className="fa fa-css3 float-right mt-1"></i></span>
                                                 </a>
-                                                <a className="dropdown-item mt-1" id="btnOpenBeforeCode" onClick={this.openOnEntryForm}> 
+                                                <a className="dropdown-item mt-1" id="btnOpenBeforeCode" onClick={this.openOnEntryForm}>
                                                     <span className="nav-text">{Lang.AddEditFormDesign.openBeforeCode}<i className="fa fa-code float-right mt-1"></i></span>
                                                 </a>
-                                                <a className="dropdown-item mt-1" id="btnOpenAfterCode" onClick={this.openOnExitForm}> 
+                                                <a className="dropdown-item mt-1" id="btnOpenAfterCode" onClick={this.openOnExitForm}>
                                                     <span className="nav-text">{Lang.AddEditFormDesign.openAfterCode}<i className="fa fa-code float-right mt-1"></i></span>
                                                 </a>
                                                 <Link to={BpmsConfig.currentPage() + "/PreviewForm/" + this.state.Model.ID} target="_blank" className="dropdown-item mt-1">

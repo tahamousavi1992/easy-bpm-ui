@@ -228,7 +228,7 @@ class FolderList extends React.Component {
                                                             {Lang.FolderList.tbl_th_MaxSize}
                                                         </th>
                                                         <th>
-                                                            {Lang.FolderList.tbl_th_ValidExtentions}
+                                                            {Lang.FolderList.tbl_th_ValidExtensions}
                                                         </th>
                                                         <th>
                                                             {Lang.FolderList.tbl_th_Operation}
@@ -253,7 +253,7 @@ class FolderList extends React.Component {
                                                                     {item.MaxSize}
                                                                 </td>
                                                                 <td className="text-center">
-                                                                    {item.ValidExtentions}
+                                                                    {item.ValidExtensions}
                                                                 </td>
 
                                                                 <td className="text-center">

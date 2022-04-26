@@ -112,7 +112,7 @@ class FgFileUploaderEditModeConvertor extends ElementEditModeConvertor {
 
         //set ScriptTab
         scriptTab
-            .append(FgCommon.createEventDiv_EditPopUp(element, eventType.change, "تابع تغییر"));
+            .append(FgCommon.createEventDiv_EditPopUp(element, eventType.change, lang.FG.eventTypeChange));
         var colsList = scriptTab.find('.col-sm-6');
         FgCommon.arrangeColsInFormGroupByColNumber(scriptTab, colsList, 1);
 

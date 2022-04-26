@@ -7,14 +7,13 @@ class DepartmentService {
     async getList(data) {
         return await new UtilityService().getData(new BpmsConfig().AdminUrl + 'BpmsDepartment/GetList', data);
     }
+    
     async get(id,parentId) {
         return await new UtilityService().getData(new BpmsConfig().AdminUrl + 'BpmsDepartment/GetAddEdit', { ID: id, ParentId: parentId });
     }
+
     async update(data) {
         return await new UtilityService().postData(new BpmsConfig().AdminUrl + 'BpmsDepartment/PostAddEdit', data);
-    }
-    async inActive(id) { 
-        return await new UtilityService().getData(new BpmsConfig().AdminUrl + 'BpmsDepartment/GetInActive', { ID: id });
     }
 
     async delete(id) {

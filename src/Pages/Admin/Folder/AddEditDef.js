@@ -13,7 +13,7 @@ class AddEditDef extends React.Component {
         //load validation
         window.initialFunctions();
         window.bpmsInitialValidation('');
-        //load data 
+        //load data
         let data = await new DocumentDefService().get(this.props.addEditId, this.props.documentFolderID);
         this.setState({ ...data });
     }
@@ -50,7 +50,7 @@ class AddEditDef extends React.Component {
                                 <div className="col-lg-6">
                                     <label>{Lang.AddEditDef.displayName}</label>
                                     <div className="input-group">
-                                        <input onChange={this.handelChange} value={this.state.DisplayName || ''} name='DisplayName' className="form-control required-field" 
+                                        <input onChange={this.handelChange} value={this.state.DisplayName || ''} name='DisplayName' className="form-control required-field"
                                         data-val-required={Lang.requiredMsg(Lang.AddEditDef.displayName)} data-val="true" autoComplete="off" />
                                     </div>
                                     <span htmlFor="DisplayName" className="help-block error"></span>
@@ -72,11 +72,11 @@ class AddEditDef extends React.Component {
                                     <span htmlFor="MaxSize" className="help-block error"></span>
                                 </div>
                                 <div className="col-lg-6">
-                                    <label>{Lang.AddEditDef.validExtentions}</label>
+                                    <label>{Lang.AddEditDef.validExtensions}</label>
                                     <div className="input-group">
                                         <input onChange={this.handelChange} value={this.state.ValidExtentions || ''} name='ValidExtentions' className="form-control" autoComplete="off" />
                                     </div>
-                                    <span htmlFor="ValidExtentions" className="help-block error"></span>
+                                    <span htmlFor="ValidExtensions" className="help-block error"></span>
                                 </div>
                             </div>
                             <div className="form-group row">

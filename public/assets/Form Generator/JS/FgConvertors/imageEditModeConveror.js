@@ -69,9 +69,9 @@ class FgImageEditModeConvertor extends ElementEditModeConvertor {
     generateElementEditPopUp(type, element, modalBody, baseSettingTab, customIconFontSettingTab, bindingTab, coddingTab, scriptTab) {
         var hideClassListName = Object.values(imageBootstrapTypeEnum);
         baseSettingTab
-            .append(FgCommon.createClassNameDiv_EditPopUp(element, hideClassListName)) // Class name 
+            .append(FgCommon.createClassNameDiv_EditPopUp(element, hideClassListName)) // Class name
             .append(FgImageEditModeConvertor.createBootstrapClassNamesDiv_EditPopUp(element)) // Bootstrap image class name
-            .append(FgImageEditModeConvertor.createWidthElementDiv_EditPopUp(element)) // Width element 
+            .append(FgImageEditModeConvertor.createWidthElementDiv_EditPopUp(element)) // Width element
             .append(FgImageEditModeConvertor.createHeightElementDiv_EditPopUp(element)) // Height element
             .append(FgImageEditModeConvertor.createSrcImageElementDiv_EditPopUp(element)) // Src element
             .append(FgCommon.createExpressionVisibilityCodeDiv_EditPopUp(element));//expression Visibility Code
@@ -82,12 +82,9 @@ class FgImageEditModeConvertor extends ElementEditModeConvertor {
         var colsList = baseSettingTab.find('.col-sm-6');
         FgCommon.arrangeColsInFormGroupByColNumber(baseSettingTab, colsList, 2);
 
-        // Add image position
-        FgImageEditModeConvertor.addPositionImageDiv_EditPopUp(element, baseSettingTab);
-
         //bindingTab initialize
         bindingTab
-            .append(FgCommon.createBindingFillTreeDiv_EditPopUp(element)); // Fill of element   
+            .append(FgCommon.createBindingFillTreeDiv_EditPopUp(element)); // Fill of element
         bindingTab.append(FgCommon.createBindingVariableParamsDiv_EditPopUp(element));//BindingVariable
         initCombooTree();
         var colsList = bindingTab.find('.col-sm-6,.col-sm-12');
@@ -111,9 +108,6 @@ class FgImageEditModeConvertor extends ElementEditModeConvertor {
         // First we should apply update css
         FgImageEditModeConvertor.updateBootsrapClassNameElement_EditPopUp(element);
 
-        // Update postion of image
-        FgImageEditModeConvertor.updatePositionImageElement_EditPopUp(element);
-
         // Update width of image
         FgImageEditModeConvertor.updateWidthElementAttributes_EditPopUp(element);
 
@@ -128,14 +122,14 @@ class FgImageEditModeConvertor extends ElementEditModeConvertor {
 
         // Update event function attribute of element
         FgCommon.updateEventAttribute_EditPopUp(element);
-         
+
         // update visibility expression code
         FgCommon.updateVisibilityExpression_EditPopUp(element);
-         
+
         // Update parameter attribute of element
         FgCommon.updateBindingParameter_EditPopUp(element);
     }
-     
+
     // Update src attribute of element in edit popup
     static updateSrcImageElementAttributes_EditPopUp(element) {
         var src = FgCommon.jq_getElementById(idElementEditForm.txtSrcImage).val();
@@ -157,25 +151,6 @@ class FgImageEditModeConvertor extends ElementEditModeConvertor {
         element.attr("width", width);
     }
 
-    // Update position of image in edit popup
-    static updatePositionImageElement_EditPopUp(element) {
-        var image = FgCommon.jq_getElementById(idElementEditForm.imgForDrag);
-        var alignExtractFromId = image.parent().parent().attr("id").substr(("divImage").length);
-
-        // Remove only old class of parent
-        // First we need to remove previous class of parent image and then add new class
-        // Maybe in the future we will class to parent that it doesn't relate to postion of image
-        // So I filterd classes that they are in imagePositionClassTypeEnum
-        element.parent().attr("class",
-            element.parent().attr("class").split(' ')
-                .filter(item => !Object.values(imagePositionClassTypeEnum).includes(item))
-                .join(' '));
-
-        // Add new class
-        element.parent().addClass(imagePositionClassTypeEnum[alignExtractFromId]);
-
-    }
-
     // Update html type of element in edit popup
     static updateBootsrapClassNameElement_EditPopUp(element) {
         if (element.attr("class")) {
@@ -189,63 +164,6 @@ class FgImageEditModeConvertor extends ElementEditModeConvertor {
         element.addClass(newClass);
     }
 
-    // This method used for sub type of class for element
-    static addPositionImageDiv_EditPopUp(element, modalBody) {
-        var parent = $('<div id="divImage" class="form-group" style="background: #dedede;">');
-        modalBody.append(parent);
-
-        var image = $('<img id="imgForDrag">');
-        image.attr("id", idElementEditForm.imgForDrag);
-        image.attr("src", element.attr("src"));
-        image.addClass(element.attr("class"));
-
-        image.mouseover(function () {
-            $(this).css({ cursor: "move" });
-        });
-
-        image.mouseout(function () {
-            $(this).css({ cursor: "" });
-        });
-
-        var divLeft = $('<div id="divImageleft" class="col-sm-4 text-center" > <div class="intro-image"> <label> Left position (Drop image here) </label></div> </div>');
-        var divCenter = $('<div id="divImagecenter" class="col-sm-4 text-center"> <div class="intro-image"><label> Middle position (Drop image here) </label> </div></div>');
-        var divRight = $('<div id="divImageright" class="col-sm-4 text-center" > <div class="intro-image"><label> Right position (Drop image here) </label> </div></div>');
-
-        parent.append(divLeft);
-        parent.append(divCenter);
-        parent.append(divRight);
-
-        // Default
-        var currentImagePosition = divLeft;
-        // We must have only one class name for element.parent() that is in imagePositionClassTypeEnum
-        var currentImagePositionClass = element.parent().attr("class").split(' ').filter(item => Object.values(imagePositionClassTypeEnum).includes(item));
-        if (currentImagePosition !== undefined && currentImagePositionClass.length > 0) {
-            currentImagePosition = parent.find('#divImage' + currentImagePositionClass[0].split('-')[1].toLowerCase());
-        }
-        currentImagePosition.find("label").hide();
-        currentImagePosition.find(".intro-image").append(image);
-
-
-        image.draggable({
-            cursor: "move",
-            helper: 'clone',
-        });
-
-        parent.find(".intro-image").droppable({
-            drop: function (ev, ui) {
-
-                if ($(this).find('label').html() !== image.parent().find('label').html()) {
-                    $(this).find("label").hide();
-                    image.parent().find("label").show();
-                }
-
-                $item = $(ui.draggable);
-                $item.attr('style', '');
-                $(this).append($item);
-            }
-        });
-    }
-
     // Create div for set src for image element
     static createSrcImageElementDiv_EditPopUp(element) {
         var srcImage = element.attr("src");
@@ -254,7 +172,7 @@ class FgImageEditModeConvertor extends ElementEditModeConvertor {
         // It's better to use col12 for src
         col6.removeClass("col-sm-6").addClass("col-sm-12");
         col6.find('input').css("direction", "ltr");
- 
+
         return col6;
     }
 
@@ -294,13 +212,6 @@ class FgImageEditModeConvertor extends ElementEditModeConvertor {
         return formGroup;
     }
 }
-
-//
-var imagePositionClassTypeEnum = {
-    center: "text-center",
-    left: "text-left",
-    right: "text-right",
-};
 
 // Bootstrap class names for image
 var imageBootstrapTypeEnum = {

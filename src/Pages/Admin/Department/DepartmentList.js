@@ -134,7 +134,7 @@ class DepartmentList extends React.Component {
     }
 
     async deleteDepartment(id) {
-        let result = await new DepartmentService().inActive(id);
+        let result = await new DepartmentService().delete(id);
         UtilityService.showMessage(result.ResultType, result.Message);
         await this.setState({ showTree: false })
         await this.doDepartmentSearch();
