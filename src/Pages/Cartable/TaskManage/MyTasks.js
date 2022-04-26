@@ -18,8 +18,8 @@ class MyTasks extends React.Component {
         window.initialFunctions();
         window.bpmsInitialValidation('');
     }
-    async doSearch(reLoad, isAdvSearch, GetPagingProperties) {
-        let data = await new UtilityService().doSearch(new CartableManageService().getList, this.state, reLoad, isAdvSearch, GetPagingProperties);
+    async doSearch(reLoad, isAdvSearch, getPagingProperties) {
+        let data = await new UtilityService().doSearch(new CartableManageService().getList, this.state, reLoad, isAdvSearch, getPagingProperties);
         this.setState({ ...data });
     }
 

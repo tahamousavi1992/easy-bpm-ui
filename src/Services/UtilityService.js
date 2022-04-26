@@ -88,7 +88,7 @@ class UtilityService {
     async getData(urlString = '', data = {}) {
         window.startLoading();
         let url = new URL(urlString)
-        Object.keys(data).forEach(key => { if (data[key] != null) { url.searchParams.append(key, data[key]) } })
+        Object.keys(data).forEach(key => { if (data[key] != null && typeof(data[key]) != 'object' ) { url.searchParams.append(key, data[key]) } })
         let resultObj = {};
         await fetch(url)
             .then(res => res.json()).then((result) => { resultObj = result; }, (error) => { resultObj.ResultType = 'error'; }
@@ -114,7 +114,7 @@ class UtilityService {
     async deleteData(urlString = '', data = {}) {
         window.startLoading();
         let url = new URL(urlString)
-        Object.keys(data).forEach(key => { if (data[key] != null) { url.searchParams.append(key, data[key]) } })
+        Object.keys(data).forEach(key => { if (data[key] != null && typeof(data[key]) != 'object') { url.searchParams.append(key, data[key]) } })
         let resultObj = {};
         // Default options are marked with *
         const response = await fetch((url), {
@@ -179,14 +179,14 @@ class UtilityService {
             return { [event.target.name.split('.')[0]]: data };
         }
     }
-
-    async doSearch(getListFunc, stateModel, reLoad, isAdvSearch, GetPagingProperties) {
+    
+    async doSearch(getListFunc, stateModel, reLoad, isAdvSearch, getPagingProperties) {
         let data = { ...stateModel };
         if (isAdvSearch != null) data['IsAdvSearch'] = isAdvSearch;
         if (reLoad == true)
             return await getListFunc({ ...data, ...stateModel.GetPagingProperties, PageIndex: 1 });
         else
-            return await getListFunc({ ...data, ...stateModel.GetPagingProperties, ...GetPagingProperties });
+            return await getListFunc({ ...data, ...stateModel.GetPagingProperties, ...getPagingProperties });
     }
 
     static showMessage(resultType, message) {
