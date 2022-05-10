@@ -7,6 +7,8 @@ import SingleActionLayout from './Components/SingleActionLayout';
 import * as serviceWorker from './serviceWorker';
 import BpmsConfig from './Shared/BpmsConfig'
 import { BrowserRouter, withRouter } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import { store } from './State/store';
 
 const Main = withRouter(({ location }) => {
     return (
@@ -28,7 +30,9 @@ const Main = withRouter(({ location }) => {
 })
 ReactDOM.render(
     <BrowserRouter>
-        <Main />
+        <Provider store={store}>
+            <Main />
+        </Provider>    
     </BrowserRouter>
     , document.getElementById('root'));
 
