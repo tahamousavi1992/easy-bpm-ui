@@ -1,5 +1,4 @@
 ﻿import React, { useState, useEffect } from 'react';
-import ConfigurationService from '../../../Services/ConfigurationService';
 import UtilityService from '../../../Services/UtilityService';
 import Lang from '../../../Shared/AdminLang/Lang';
 import { CheckBox } from '../../../Components/Select';
